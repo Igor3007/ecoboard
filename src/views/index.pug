@@ -1,0 +1,91 @@
+extends layouts/home
+
+include ../blocks/modules/product-card/product-card.pug
+include ../blocks/modules/about-us/about-us.pug
+include ../blocks/modules/objects/objects.pug
+include ../blocks/modules/reviews/reviews.pug
+include ../blocks/modules/faq/faq.pug
+include ../blocks/modules/stats/stats.pug
+include ../blocks/modules/main-slider/main-slider.pug
+
+block variables
+  include ../data/data.pug
+  - const title = "Главная - Ecoboard"
+
+
+block content
+
+    +main-slider(app.slider)
+    +stats(app.statsData)
+
+    section.section-product-cart
+        +product-card({
+            label: 'Фиброцементный сайдинг',
+            title: 'ЭкоБоард Классик',
+            list: [
+                'Размер: 200*3000*8 мм',
+                'Монтаж: внахлёст ёлочкой',
+                'Фактура: дерево',
+                'Материал: фиброцемент (целлюлоза)',
+                'Площадь общая: 0,6 м²',
+                'Площадь полезная (при монтаже ёлочкой): 0,51 м²',
+            ],
+            button: 'Подробнее про Классик',
+            img: '/img/product/img-frame.png',
+            price: 'от 6 400 ₽ / м²'
+        })
+
+        +product-card({
+            label: 'Фиброцементный сайдинг',
+            title: 'ЭкоБоард Клик под дерево',
+            list: [
+                'Размер: 200*3000*10 мм',
+                'Размер: 200*3000*12 мм',
+                'Монтаж: скрытая система крепежа на кляймерах',
+                'Фактура: дерево',
+                'Материал: фиброцемент (целлюлоза)',
+                'Площадь общая: 0,6 м2',
+                'Площадь полезная (при монтаже на кляймерах): 0,57 м2',
+            ],
+            button: 'Подробнее про Клик под дерево',
+            img: '/img/product/img-frame2.jpg',
+            price: 'от 4 800 ₽ / м²'
+        })
+
+        +product-card({
+            label: 'Фиброцементный сайдинг',
+            title: 'ЭкоБоард Клик под камень',
+            list: [
+                'Размер: 300*3000*12мм',
+                'Монтаж: скрытая система крепежа на кляймерах',
+                'Фактура: камень',
+                'Материал: фиброцемент (целлюлоза)',
+                'Площадь общая: 0,6 м2',
+                'Площадь полезная (при монтаже на кляймерах): 0,57 м2',
+            ],
+            button: 'Подробнее про Клик под камень',
+            img: '/img/product/img-frame3.jpg',
+            price: 'от 4 800 ₽ / м²'
+        })
+
+        +product-card({
+            label: 'Фиброцементный сайдинг',
+            title: 'Комплектующие фасадных систем',
+            list: [
+                'Широкий ассортимент товаров',
+                'Комфортные цены от производителя',
+                'Строгое соблюдение производственных стандартов и характеристик',
+            ],
+            button: 'Подробнее про комплектующие',
+            img: '/img/product/imgs-grid-4.jpg',
+            price: 'от 1 080 ₽ / м²',
+            disableColor: true
+        })
+
+    +about(app.aboutHeroData)
+    +objects
+    +reviews
+    +faq(app.faqData)
+
+block scripts
+  script(src="/js/common.js")

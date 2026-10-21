@@ -1,0 +1,81 @@
+@use "../helpers/variables";
+@use "../base/general"; // Для миксина .container
+
+.stats-section {
+  padding: 40px 0;
+
+  @media screen and (min-width: variables.$w760) {
+    padding: 36px 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr; // На мобилке 1 колонка
+    gap: 16px;
+
+    // На планшетах 2 колонки
+    @media screen and (min-width: variables.$w576) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    // На десктопе 4 колонки в ряд
+    @media screen and (min-width: variables.$w992) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+}
+
+// Карточка статистики
+.stat-card {
+  background: #fff;
+  border: 1px solid variables.$border-01;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Чтобы карточки в ряду были одинаковой высоты
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  // Эффект при наведении (опционально)
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+
+  @media screen and (min-width: variables.$w992) {
+    padding: 28px;
+  }
+
+  &__header {
+    margin-bottom: 16px;
+  }
+
+  &__value {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2;
+    color: variables.$text-01;
+    margin: 0 0 4px 0;
+
+    @media screen and (min-width: variables.$w992) {
+      font-size: 24px;
+    }
+  }
+
+  &__label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.3;
+    color: variables.$text-01;
+    margin: 0;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: variables.$gray-48; // Используем серый цвет из ваших переменных
+    margin: 0;
+    flex-grow: 1; // Растягиваем текст на оставшееся место, если нужно
+  }
+}

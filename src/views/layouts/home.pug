@@ -1,0 +1,24 @@
+block variables
+include ../helpers/mixins
+include ../../blocks/components/headers/headers
+
+doctype html
+html(lang="ru")
+  head
+    include parts/head.pug
+
+  body.perf-no-animation
+    header
+      block header
+        include ../../blocks/modules/common/header/header.pug
+    main
+      block content
+
+    footer
+      block footer
+          include ../../blocks/modules/common/footer/footer.pug
+
+
+    block scripts
+
+      script(src="js/common.js")

@@ -1,0 +1,23 @@
+mixin faq(data)
+  section.faq-section
+    .container
+      //- Заголовок и кнопка (десктоп)
+      .faq-section__header
+        h2.faq-section__title Частые вопросы
+        button.btn.btn-gray.faq-section__btn-top(type="button") Задать вопрос
+
+      //- Список вопросов
+      .faq-section__list
+        each item in data
+          .faq-item
+            .faq-item__summary
+              .faq-item__icon
+                span
+              h3.faq-item__question= item.question
+
+            .faq-item__answer
+              p= item.answer
+
+      //- Кнопка (мобилка)
+      .faq-section__footer
+        button.btn.btn-gray.faq-section__btn-bottom(type="button") Задать вопрос

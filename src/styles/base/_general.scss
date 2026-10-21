@@ -1,0 +1,202 @@
+@use "../helpers/variables";
+@use "base";
+@use '../../blocks/components/formated-text/formated-text.scss';
+
+
+@mixin container-breakpoint {
+    // max-width: 400px;
+    padding: 0 16px;
+    min-width: 316px;
+
+    @media screen and (min-width: variables.$w480) {
+        padding: 0 16px;
+    }
+
+    @media screen and (min-width: variables.$w576) {
+        padding: 0 24px;
+    }
+
+    @media screen and (min-width: variables.$w760) {
+        padding: 0 24px;
+    }
+
+    @media screen and (min-width: variables.$w992) {
+        padding: 0 30px;
+    }
+
+    @media screen and (min-width: variables.$w1200) {
+        padding: 0 30px;
+        max-width: none;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+        padding: 0 30px;
+        max-width: 1900px;
+    }
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    @include container-breakpoint;
+}
+
+
+@mixin section-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 133%;
+    text-align: center;
+    text-transform: uppercase;
+    color: variables.$main;
+
+    @media screen and (min-width: variables.$w1440) {
+        font-size: 48px;
+    }
+}
+
+@mixin section-title-site {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 133%;
+    text-align: center;
+    text-transform: uppercase;
+    color: variables.$main;
+
+    @media screen and (min-width: variables.$w992) {
+        font-size: 48px;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+        font-size: 60px;
+    }
+}
+
+@mixin section-title-h2 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 133%;
+    text-align: center;
+    text-transform: uppercase;
+    color: variables.$main;
+
+    @media screen and (min-width: variables.$w1440) {
+        font-size: 28px;
+    }
+}
+
+@mixin section-title-h3 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 133%;
+    text-align: center;
+    text-transform: uppercase;
+    color: variables.$main;
+
+    @media screen and (min-width: variables.$w576) {
+        font-size: 24px;
+    }
+}
+
+@mixin section-subtitle {
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 117.2%;
+    color: #1B1A1C;
+
+    @media screen and (min-width: variables.$w992) {
+        font-size: 48px;
+    }
+
+}
+
+@mixin section-label {
+    display: none;
+
+    @media screen and (min-width: variables.$w760) {
+        padding-bottom: 15px;
+        display: block;
+
+        & span {
+            padding: 7px 16px;
+            background: #BF3232;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #fff;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+    }
+
+}
+
+
+@mixin section-padding {
+    padding: 55px 0;
+
+    @media screen and (min-width: variables.$w576) {
+        padding: 70px 0;
+    }
+}
+
+
+@mixin font-h1 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 121%;
+
+
+    @media screen and (min-width: variables.$w760) {
+        font-size: 28px;
+    }
+
+    @media screen and (min-width: variables.$w1200) {
+        font-size: 44px;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+        font-size: 52px;
+    }
+}
+
+@mixin font-h1-inners {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 121%;
+
+    @media screen and (min-width: variables.$w760) {
+        font-size: 28px;
+    }
+
+    @media screen and (min-width: variables.$w1200) {
+        font-size: 44px;
+    }
+}
+
+@mixin font-h2 {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 121%;
+
+    @media screen and (min-width: variables.$w760) {
+        font-size: 28px;
+    }
+}
+
+@mixin font-h3 {
+
+
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 160%;
+
+    @media screen and (min-width: variables.$w576) {
+        font-size: 20px;
+    }
+
+
+}
+
+
+

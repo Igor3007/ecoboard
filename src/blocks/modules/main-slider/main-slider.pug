@@ -1,0 +1,41 @@
+mixin main-slider(data)
+  section.interactive-slider
+    .container
+      .interactive-slider__layout
+
+        //- ЛЕВАЯ ЧАСТЬ: Тексты
+        .interactive-slider__content
+          .interactive-slider__texts
+            each item, index in data
+              //- Первый блок активен по умолчанию
+              .interactive-slider__text-block(class=(index === 0 ? 'is-active' : ''), data-index=index)
+                .interactive-slider__tags
+                    span Сезонная акция
+                    span.line= item.action
+                h2.interactive-slider__title= item.title
+                p.interactive-slider__desc= item.description
+                .interactive-slider__link
+                    ul
+                        li: a(href='#'): button.btn.btn-red Узнать подробнее
+                        li: a(href='#'): button.btn.btn-line Оставить заявку
+
+          //- Кнопки навигации (статичные)
+          .interactive-slider__nav
+            .slider-nav
+                .slider-nav__prev.js-prev(type="button" aria-label="Назад")
+                .slider-nav__count
+                    span(data-current) -
+                    | /
+                    span(data-all) -
+                .slider-nav__next.js-next(type="button" aria-label="Вперед")
+
+
+        //- ПРАВАЯ ЧАСТЬ: Слайдер с картинками
+        .interactive-slider__media
+          .interactive-slider__slider.splide
+            .splide__track
+              ul.splide__list
+                each item, index in data
+                  li.splide__slide
+                    .interactive-slider__image-wrapper
+                      img.interactive-slider__image(src=item.image, alt=item.title, loading=(index === 0 ? "eager" : "lazy"))

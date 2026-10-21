@@ -1,0 +1,375 @@
+@use "../helpers/variables";
+@use "../base/general";
+
+.interactive-slider {
+
+    overflow: visible;
+
+    @media screen and (min-width: variables.$w992) {
+        overflow: hidden;
+    }
+
+    padding: 0;
+
+    &__layout {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        background-color: variables.$accent-1-3;
+        padding: 12px;
+        border-radius: 12px;
+
+        @media screen and (min-width: variables.$w992) {
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDg4IiBoZWlnaHQ9IjMyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBvcGFjaXR5PSIuMSIgZmlsbD0iI0UwMUIyNSI+PHBhdGggZD0iTTQ4OCA2MDRIMFY0MzQuNDI1bDI2MC4yNjctNjkuOTMzTDQ4OCA0NDkuNjMzVjYwNHoiLz48cGF0aCBkPSJNNDg4IDMzNi4yMjh2NzkuMTY4bC0yMjcuNzMzLTg4LjQ4MkwwIDM5OS4wOTZ2LTg4LjAxNWwyNjAuMjY3LTc2LjM3M0w0ODggMzM2LjIyOHoiLz48cGF0aCBkPSJNNDg4IDE0MS42OTR2MTU0Ljk1MWwtMjI3LjczMy05Ni4zOThMMCAyNzYuMTY5VjE0MS42OTRMMjYwLjI2NyAwIDQ4OCAxNDEuNjk0eiIvPjwvZz48L3N2Zz4=);
+            background-repeat: no-repeat;
+            background-position: 16% bottom;
+        }
+        @media screen and (min-width: variables.$w1440) {
+            gap: 60px;
+        }
+    }
+
+    // --- ЛЕВАЯ ЧАСТЬ ---
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        color: #fff;
+
+
+        @media screen and (min-width: variables.$w992) {
+            width: 50%;
+            min-height: 420px; // Чтобы высота не прыгала при смене текста
+            padding: 20px;
+        }
+        @media screen and (min-width: variables.$w1660) {
+            width: 50%;
+            min-height: 510px; // Чтобы высота не прыгала при смене текста
+            padding: 0 50px 0 50px;
+        }
+    }
+
+    &__texts {
+
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+
+    &__text-block {
+        // Скрываем все блоки
+
+        display: none;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        flex-grow: 1;
+        // Активный блок
+        &.is-active {
+
+            opacity: 1;
+            visibility: visible;
+            display: flex;
+            flex-direction: column;
+
+            & .interactive-slider {
+                &__title{
+                  animation: slide-up 0.3s ease forwards;
+                }
+                &__desc{
+                  animation: slide-up 0.3s ease forwards;
+                  animation-delay: 0.2s ;
+                }
+            }
+
+        }
+    }
+
+    &__tags{
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+
+        @media screen and (max-width: variables.$w992) {
+            margin-top: 24px;
+        }
+
+        & span {
+            background-color: #fff;
+            padding: 10px;
+            color: variables.$text-01;
+            display: inline-block;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 14px;
+
+            &.line {
+                background-color: transparent;
+                border: 1px solid #fff;
+                color: #fff;
+            }
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 1.2;
+        color: #fff;
+        margin: 0 0 16px 0;
+        text-align: center;
+        margin-top: auto;
+
+        @media screen and (max-width: variables.$w992) {
+            margin-top: 40px;
+        }
+
+
+
+        @media screen and (min-width: variables.$w992) {
+            font-size: 36px;
+        }
+
+        @media screen and (min-width: variables.$w1440) {
+            font-size: 42px;
+        }
+
+        @media screen and (min-width: variables.$w1660) {
+            font-size: 52px;
+
+        }
+    }
+
+    &__desc {
+        font-size: 15px;
+        line-height: 1.5;
+        color: #fff;
+        margin: 0 0 32px 0;
+        text-align: center;
+        opacity: 0;
+
+        @media screen and (min-width: variables.$w992) {
+            font-size: 18px;
+        }
+    }
+
+    &__btn {
+        align-self: flex-start;
+    }
+
+    // Кнопки навигации
+    &__nav {
+        display: inline-block;
+        gap: 12px;
+        margin-top: -49px;
+        justify-content: flex-end;
+        position: relative;
+        z-index: 5;
+        margin-left: auto;
+    }
+
+    &__link{
+
+        margin-top: auto;
+
+        @media screen and (max-width: variables.$w992) {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+
+
+        & ul {
+            display: flex;
+            gap: 12px;
+
+            @media screen and (max-width: variables.$w576) {
+                flex-direction: column;
+                width: 100%;
+
+                & li {
+                    width: 100%;
+                }
+
+                & .btn {
+                    width: 100%;
+                }
+             }
+        }
+
+    }
+
+    &__nav-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid variables.$border-01;
+        color: variables.$text-01;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: variables.$main;
+            border-color: variables.$main;
+            color: #fff;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #fff;
+            color: variables.$text-01;
+            border-color: variables.$border-01;
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    // --- ПРАВАЯ ЧАСТЬ ---
+    &__media {
+        @media screen and (min-width: variables.$w992) {
+            width: 50%;
+        }
+    }
+
+    &__slider {
+
+        // Стили для Splide
+        .splide__track {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+    }
+
+    &__image-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 66.66%; // Соотношение сторон 3:2 (можно изменить)
+        background: #e0e0e0;
+
+        @media screen and (min-width: variables.$w992) {
+            padding-top: 70%; // На десктопе можно сделать чуть выше (4:3)
+        }
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    & .splide {
+        &__pagination {
+            bottom: -30px;
+
+            &__page {
+                width: 8px;
+                height: 4px;
+                background-color: variables.$border-01;
+                border-radius: 10px;
+                opacity: 1;
+                transition: 0.3s ease;
+
+                &.is-active {
+                    width: 24px;
+                    background-color: variables.$accent-1-1;
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}
+
+.slider-nav {
+
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+
+    @media screen and (max-width: variables.$w1200) {
+        visibility: hidden;
+    }
+
+    &__next,
+    &__prev {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.3s ease;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.218);
+        }
+
+        &::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNSIgaGVpZ2h0PSI2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0wIDNjMCAuMTM3LjAzMy4yNy4wOTcuMzlhLjc3OC43NzggMCAwMC4yNjYuMjlsMy41MDIgMi4yMWEuNzI1LjcyNSAwIDAwLjc1My4wMDYuNzc1Ljc3NSAwIDAwLjI3Ny0uMjg4QS44MjcuODI3IDAgMDA1IDUuMjE0Vi43ODlhLjgyOC44MjggMCAwMC0uMTAzLS4zOTUuNzc1Ljc3NSAwIDAwLS4yNzYtLjI4OS43MjQuNzI0IDAgMDAtLjc1Mi4wMDFMLjM2NCAyLjMyYS43NzguNzc4IDAgMDAtLjI2Ni4yOUEuODMuODMgMCAwMDAgM3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=);
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+        }
+    }
+
+    &__next{
+    &::after {
+        transform: rotate(180deg);
+    }
+    }
+
+    &__count {
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+        width: 80px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+
+        @media screen and (max-width: variables.$w1376) {
+            width: 0px;
+            overflow: hidden;
+        }
+
+
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

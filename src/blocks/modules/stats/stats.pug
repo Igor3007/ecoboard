@@ -1,0 +1,10 @@
+mixin stats(data)
+  section.stats-section
+    .container
+      .stats-section__grid
+        each item in data
+          .stat-card
+            .stat-card__header
+              h3.stat-card__value= item.value
+              p.stat-card__label= item.label
+            p.stat-card__text= item.text

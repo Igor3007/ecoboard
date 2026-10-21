@@ -1,0 +1,327 @@
+@use "../helpers/variables";
+@use "../helpers/mixins";
+
+.about-hero {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 16px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    // Десктопная раскладка (две колонки)
+    @media screen and (min-width: variables.$w992) {
+      flex-direction: row;
+      min-height: 548px;
+    }
+  }
+
+  // --- ЛЕВАЯ КОЛОНКА ---
+  &__content-col {
+    position: relative;
+    padding: 40px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+
+    @media screen and (min-width: variables.$w576) {
+      padding: 40px 24px 24px;
+    }
+
+    @media screen and (min-width: variables.$w992) {
+      width: 67%;
+      padding: 70px 40px 60px 64px;
+      justify-content: center;
+    }
+
+
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      // Затемнение фона для читаемости текста
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__content-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  &__label-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: variables.$main;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+    color: #fff;
+
+    @media screen and (min-width: variables.$w760) {
+      font-size: 36px;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+      font-size: 42px;
+    }
+
+    // Для вставки тегов <br> или выделения цветом через ! в Pug
+    span {
+      color: variables.$main;
+    }
+  }
+
+  &__desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 30px 0;
+
+    @media screen and (min-width: variables.$w760) {
+      font-size: 16px;
+      margin-top: auto;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: variables.$w576) {
+      width: auto;
+      display: inline-flex;
+      margin-bottom: 0;
+
+    }
+  }
+
+  // Блок видео
+  &__video {
+    background: variables.$main;
+    border-radius: 8px;
+    padding: 25px 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    @media screen and (min-width: variables.$w992) {
+      max-width: 480px;
+      position: absolute; // Позиционируем поверх стыка колонок на десктопе
+      bottom: -40px;
+      left: 40px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+        left: 123%;
+    max-width: 380px;
+    bottom: 4px;
+    }
+  }
+
+  &__video-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 0 4px 0;
+    color: #fff;
+
+    @media screen and (min-width: variables.$w1440) {
+        font-size: 18px;
+    }
+  }
+
+  &__video-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+
+    @media screen and (min-width: variables.$w1440) {
+        font-size: 14px;
+    }
+  }
+
+  &__video-btn {
+    width: 72px;
+    height: 72px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: variables.$main;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    svg {
+      margin-left: 4px; // Для оптического центрирования треугольника
+    }
+  }
+
+  // --- ПРАВАЯ КОЛОНКА (Карточки) ---
+  &__features-col {
+    position: relative;
+    padding: 24px 16px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 3;
+
+    @media screen and (min-width: variables.$w576) {
+      padding: 24px;
+    }
+
+    @media screen and (min-width: variables.$w992) {
+      width: 33%;
+      padding: 60px 40px 60px 80px; // Увеличенный левый отступ, чтобы карточки не наезжали на треугольник
+      justify-content: center;
+    }
+  }
+
+  &__features-bg {
+    // Красный скошенный фон на десктопе
+    display: none;
+
+    @media screen and (min-width: variables.$w992) {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(102, 12, 17, 0.7);
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjA4IiBoZWlnaHQ9IjQ4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMCAwaDYwOHYxMDQuMzcxTDAgNDgwVjB6IiBmaWxsPSIjOEYxMTE3Ii8+PC9zdmc+);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: contain;
+      z-index: 0;
+    }
+  }
+
+  &__features-list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+// Карточка преимущества
+.feature-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.3;
+    color: variables.$text-01;
+    margin: 0 0 8px 0;
+
+    @media screen and (min-width: variables.$w760) {
+      font-size: 18px;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: variables.$gray-48;
+    margin: 0;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    color: variables.$main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & span {
+        width: 55px;
+        height: 55px;
+        display: inline-block;
+    }
+
+    @media screen and (min-width: variables.$w760) {
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}

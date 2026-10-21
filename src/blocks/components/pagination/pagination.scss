@@ -1,0 +1,100 @@
+@use "../../../styles/helpers/functions";
+@use "../../../styles/helpers/variables";
+
+ .pagination {
+     display: flex;
+     justify-content: space-between;
+     width: 100%;
+
+     &__page {
+
+         display: flex;
+         align-items: center;
+         margin-left: auto;
+         margin-right: auto;
+
+         @media screen and (min-width: variables.$w992) {
+             margin-left: 0;
+         }
+
+         & ul {
+             display: flex;
+             list-style-type: none;
+
+             & li {
+
+                 &.prev,
+                 &.next {
+
+                     & span,
+                     & a {
+                         width: auto;
+                         display: flex;
+                         align-items: center;
+                         padding: 0 1em;
+                     }
+                 }
+
+                 &:first-child {
+                     margin-left: 0;
+                 }
+
+                 &.active span,
+                 &.active a {
+                     background-color: variables.$main;
+                     color: #fff;
+
+                     &:hover {
+                         color: #fff;
+                     }
+
+                     & svg {
+                         fill: #fff;
+
+                     }
+                 }
+
+                 & span,
+                 & a {
+                     width: functions.rem(36);
+                     height: functions.rem(36);
+                     display: flex;
+                     border-radius: 3px;
+                     align-items: center;
+                     justify-content: center;
+                     color: variables.$black;
+                     font-weight: 800;
+
+                     @media screen and (min-width: variables.$w992) {
+                         width: functions.rem(40);
+                         height: functions.rem(40);
+                     }
+
+                     & svg {
+                         fill: #000;
+                         min-width: 10px;
+                         height: 10px;
+
+                         margin-top: 4px;
+                     }
+
+                     &>span {
+                         @media screen and (max-width: variables.$w576) {
+                             display: none !important;
+                         }
+                     }
+
+                     &:hover {
+                         color: variables.$main;
+
+                         & svg {
+                             fill: variables.$main;
+                         }
+                     }
+                 }
+
+             }
+         }
+
+     }
+ }

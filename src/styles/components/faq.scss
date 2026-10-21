@@ -1,0 +1,182 @@
+@use "../helpers/variables";
+
+
+.faq-section {
+  padding: 40px 0;
+
+  @media screen and (min-width: variables.$w760) {
+    padding: 45px 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 20px;
+
+    // Скрываем кнопку в шапке на мобилке
+    .faq-section__btn-top {
+      display: none;
+
+      @media screen and (min-width: variables.$w760) {
+        display: inline-flex;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.2;
+    color: variables.$text-01;
+    margin: 0;
+
+    @media screen and (min-width: variables.$w992) {
+      font-size: 36px;
+    }
+    @media screen and (min-width: variables.$w1440) {
+      font-size: 44px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__list {
+    background: variables.$bg-01;
+    border-radius: 12px;
+    // Если нужна обводка, можно добавить border: 1px solid variables.$border-01;
+  }
+
+  &__footer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+
+    // Скрываем нижнюю кнопку на десктопе
+    @media screen and (min-width: variables.$w760) {
+      display: none;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+.faq-item {
+  border-bottom: 1px solid variables.$border-01;
+
+  // Убираем border у последнего элемента
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+    cursor: pointer;
+    list-style: none; // Убираем стандартный треугольник
+
+    // Убираем стандартный маркер в Webkit
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+      padding: 24px 30px;
+    }
+    @media screen and (min-width: variables.$w760) {
+      align-items: center; // На десктопе выравниваем по центру, если текст в одну строку
+      gap: 24px;
+    }
+
+    // Анимация наведения
+    &:hover {
+      .faq-item__question {
+        color: variables.$main;
+      }
+    }
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: variables.$main;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    // Если иконка внутри SVG
+    span {
+      width: 20px;
+      height: 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgY2xpcC1wYXRoPSJ1cmwoI3ByZWZpeF9fcHJlZml4X19jbGlwMF8yMDMzXzc1NykiPjxwYXRoIGQ9Ik0xMC4yNjguNDVhMy42ODYgMy42ODYgMCAwMTMuMzI4LS4xMDZsLjIxLjEwNiA3LjQ1MiA0LjM1OS4xMDUuMDY4LjEwMS4wODQuMTE4LjA4MmEzLjUyNyAzLjUyNyAwIDAxMS4zOTMgMi4zODhsLjAyLjIyLjAwNS4yMjN2Ny45NDdhMy40OTQgMy40OTQgMCAwMS0xLjYgMi45MzlsLS4xODYuMTA5LTcuNDg0IDQuNjk0Yy0xLjAxLjU1LTIuMjIuNTgzLTMuMzA0LjA3NGwtLjIxNi0uMTEtNy4zNjQtNC42MjJhMy41MzcgMy41MzcgMCAwMS0xLjI4OS0xLjE5NSAzLjUgMy41IDAgMDEtLjU1LTEuNjYzTDEgMTUuODIxVjcuODczQTMuNSAzLjUgMCAwMTIuNjI0IDQuOTJMMTAuMjY4LjQ1ek0xMiAxNC4xODJhMS4wOTcgMS4wOTcgMCAwMC0xLjA5Mi45NjRsLS4wMDguMTI3LjAwOC4xNGMuMDMyLjI2NC4xNi41MDkuMzYyLjY4NmExLjEwNSAxLjEwNSAwIDAwMS40NiAwYy4yMDItLjE3Ny4zMy0uNDIyLjM2Mi0uNjg3bC4wMDgtLjEyOC0uMDA4LS4xMzhhMS4wODggMS4wODggMCAwMC0uMzYxLS42ODggMS4xMDUgMS4xMDUgMCAwMC0uNzMxLS4yNzZ6bTEuNTA1LTcuMjhhMy4zMDIgMy4zMDIgMCAwMC0zLjk5NC43OTQgMS4wODYgMS4wODYgMCAwMC4wNzQgMS40OTUgMS4xMDUgMS4xMDUgMCAwMDEuNTEuMDE0bC4xODgtLjE5N2ExLjA4MiAxLjA4MiAwIDAxMS4yMi0uMTYzIDEuMDgzIDEuMDgzIDAgMDEuMjU1IDEuNzdjLS4xNzIuMTYtLjM5My4yNjEtLjYyOC4yODdsLS4yNTUuMDE0Yy0uMjguMDMtLjUzNy4xNjYtLjcyLjM3OWExLjA4NiAxLjA4NiAwIDAwLjA4NSAxLjQ5OGMuMjA0LjE5Mi40NzUuMjk5Ljc1Ny4yOThhMy4zMTcgMy4zMTcgMCAwMDIuMDQ3LS42OTggMy4yNyAzLjI3IDAgMDAxLjE3LTEuODA2Yy4xNzUtLjcxNi4xLTEuNDY4LS4yMS0yLjEzN2EzLjI4NSAzLjI4NSAwIDAwLTEuNS0xLjU0OXoiIGZpbGw9IiNFMDFCMjUiLz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJwcmVmaXhfX3ByZWZpeF9fY2xpcDBfMjAzM183NTciPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMjR2MjRIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4=);
+    }
+
+    @media screen and (min-width: variables.$w760) {
+      width: 48px;
+      width: 48px;
+      height: 48px;
+    }
+    @media screen and (min-width: variables.$w1440) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__question {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: variables.$text-01;
+    margin: 0;
+    transition: color 0.3s ease;
+    padding-top: 8px; // Выравнивание по центру иконки на мобилке, если текст в 2 строки
+
+    @media screen and (min-width: variables.$w760) {
+      font-size: 18px;
+      padding-top: 0;
+    }
+    @media screen and (min-width: variables.$w1440) {
+      font-size: 18px;
+      padding-top: 0;
+      margin-top: -27px;
+    }
+  }
+
+  &__answer {
+    padding: 0 24px 24px 24px;
+    padding-left: 80px; // 24 (padding) + 40 (icon) + 16 (gap) = 80px (для мобилки)
+    color: variables.$gray-48;
+    font-size: 15px;
+    line-height: 1.6;
+
+    @media screen and (min-width: variables.$w760) {
+      padding-left: 115px; // 24 + 48 + 20
+      font-size: 16px;
+      margin-top: -35px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // Опционально: стилизация открытого состояния
+  &[open] {
+    .faq-item__icon {
+      // Можно изменить цвет фона иконки при открытии
+      background: variables.$main;
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,214 @@
+@use "../helpers/variables"as var;
+
+.header-top {
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 15px 0;
+
+    @media screen and (min-width: var.$w1440) {
+        gap: 40px;
+    }
+    @media screen and (min-width: var.$w480) {
+        gap: 24px;
+    }
+
+    @media screen and (min-width: var.$w992) {
+        padding-block: 32px;
+    }
+
+    &__logo {
+        & .bgimage {
+            width: 140px;
+            height: 40px;
+            display: block;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            @media screen and (min-width: var.$w1200) {
+                width: 168px;
+                height: 48px;
+            }
+        }
+    }
+
+    &__catalog {
+        & .btn {
+            padding-inline: 24px;
+
+            @media screen and (max-width: var.$w1200) {
+                padding-inline: 16px;
+                min-width: auto;
+            }
+
+            & svg {
+                margin-right: 5px;
+            }
+        }
+
+        & span {
+            &.is-mobile {
+                @media screen and (min-width: var.$w1376) {
+                    display: none;
+                }
+            }
+
+            &.is-desctop {
+                @media screen and (max-width: var.$w1376) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__nav {
+
+        align-items: center;
+        flex-grow: 1;
+        display: none;
+
+        @media screen and (min-width: var.$w992) {
+        display: flex;
+        }
+
+        & ul {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+
+            @media screen and (min-width: var.$w1440) {
+                gap: 32px;
+            }
+
+            & a {
+                font-weight: 600;
+
+                &:hover {
+                    color: var.$accent-1-1;
+                }
+            }
+        }
+    }
+
+    &__social {
+
+        display: none;
+
+        @media screen and (min-width: var.$w1376) {
+            display: block;
+        }
+
+        & ul {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            & svg {
+                height: 15px;
+                width: 17px;
+            }
+
+            & a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var.$bg-01;
+                border-radius: 12px;
+                width: 32px;
+                height: 32px;
+                transition: 0.3s ease;
+
+                &:hover {
+                    background-color: var.$border-01;
+
+                    & svg {
+                        fill: var.$accent-1-1;
+
+                    }
+                }
+            }
+        }
+    }
+
+    &__phone {
+        text-align: right;
+        & a {
+            font-weight: 600;
+            text-align: right;
+
+
+            @media screen and (max-width: var.$w576) {
+                font-size: 14px;
+            }
+
+            &:hover {
+                color: var.$accent-1-1;
+            }
+        }
+    }
+
+    &__email {
+        text-align: right;
+
+        & a {
+            font-size: 14px;
+            color: var.$text-02;
+
+            @media screen and (max-width: var.$w576) {
+                font-size: 13px;
+            }
+
+            &:hover {
+                color: var.$accent-1-1;
+            }
+        }
+    }
+
+    &__right {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        margin-left: auto;
+    }
+
+    &__action {
+
+
+
+        & .btn {
+
+
+             @media screen and (max-width: var.$w1376) {
+                padding-inline: 10px;
+             }
+
+             @media screen and (max-width: var.$w1100) {
+
+                width: 48px;
+                min-width: 48px;
+
+                & span {
+                    display: none;
+                }
+
+                & svg {
+                    margin-right: 0;
+                }
+             }
+
+             & svg {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    &__contacts{
+        display: none;
+
+        @media screen and (min-width: 540px) {
+            display: block;
+         }
+    }
+}

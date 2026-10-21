@@ -1,0 +1,40 @@
+include parts
+
+.header
+    .container
+        .header-top
+            .header-top__logo
+                a(href='/'): span.bgimage(style="background-image: url('/img/common/logo-color.png')")
+
+            .header-top__catalog
+                a(href="/products.html")
+                    button.btn.btn-red
+                        +icons('#ic_cat')
+                        span.is-desctop Продукция
+                        span.is-mobile Меню
+
+            .header-top__nav
+                nav
+                    ul
+                        each item in app.mainMenu
+                            li: a(href=item.href)= item.text
+
+            .header-top__right
+                .header-top__social
+                    ul
+                        li: a(href='#'): +icons('#ic_tg')
+                        li: a(href='#'): +icons('#ic_ph')
+                        li: a(href='#'): +icons('#ic_vk')
+
+                .header-top__contacts
+                    .header-top__phone: a(href='tel:+7 (922) 701-30-50') +7 (922) 701-30-50
+                    .header-top__email: a(href='mailto:info@ekoboard.ru') info@ekoboard.ru
+
+                .header-top__action
+                    a(href='#')
+                        button.btn.btn-gray
+                            +icons('#ic_callback')
+                            span Заказать звонок
+
+
+

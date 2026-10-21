@@ -1,0 +1,36 @@
+@use "../helpers/mixins";
+@use "../helpers/variables";
+@use "general";
+
+/* common styles */
+
+.dragscroll.dragging {
+    pointer-events: none;
+}
+
+.page-hidden {
+    overflow: hidden !important;
+    touch-action: none;
+}
+
+
+.hide {
+    &--mobile {
+        @media screen and (max-width: variables.$w1200) {
+            display: none;
+        }
+    }
+
+    &--desctop {
+        @media screen and (min-width: variables.$w1200) {
+            display: none;
+        }
+    }
+}
+
+
+
+.text--line-clamp-6 {
+    @include mixins.line-clamp(6);
+}
+

@@ -1,0 +1,150 @@
+@use "../styles/helpers/variables";
+
+.btn {
+
+    padding: 0.8em 1.5em 0.85em 1.5em;
+    background: variables.$accent-1-1;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    height: 48px;
+    white-space: nowrap;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 6px;
+
+
+
+    @media screen and (min-width: variables.$w576) {
+        transition: .3s cubic-bezier(.1, .82, .25, 1);
+    }
+
+    &:hover {
+        background-color: variables.$accent-1-2;
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+
+    &:disabled {
+        background-color: #b1b1b1;
+        color: #fff;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: #a09f9f;
+        }
+    }
+
+    & svg {
+        fill: #fff;
+        margin-right: 1em;
+    }
+
+    &.btn-gray {
+        background-color: variables.$bg-01;
+        color: #000;
+        font-weight: 400;
+
+        &:hover {
+            background-color: variables.$gray-92;
+        }
+    }
+
+    &.btn-white {
+        background-color: #fff;
+        color: #000;
+
+        &:hover {
+            background-color: variables.$gray-92;
+        }
+    }
+
+    &.btn-line {
+        background-color: transparent;
+        color: #fff;
+        border: 1px solid #fff;
+
+        &:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    }
+
+    &.btn-accent {
+        background-color: variables.$main;
+        color: #fff;
+
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    &.btn-full {
+        width: 100%;
+    }
+
+    &.btn-radius {
+        border-radius: 60px;
+    }
+
+
+    &.btn-small {
+        height: 40px;
+        font-size: 14px;
+        padding: 0.7em 2.5em 0.8em 2.5em;
+        font-weight: 400;
+    }
+
+    &.btn-loading {
+        &::after {
+            content: '';
+            width: 0.8em;
+            min-width: 0.8em;
+            height: 0.8em;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-left-color: transparent !important;
+            margin-left: 10px;
+            transition: transform 0.5s linear;
+            animation: 0.5s linear loadingrotate infinite;
+            display: inline-block;
+            white-space: nowrap;
+            flex-wrap: nowrap;
+            position: relative;
+            left: 5px;
+        }
+    }
+
+    &.btn-success {
+        &::after {
+            content: '';
+            width: 15px;
+            min-width: 14px;
+            height: 9px;
+            border: 2px solid #fff;
+            animation: none;
+            min-width: 12px;
+            display: inline-block;
+            border-top: none;
+            border-right: none;
+            transform: rotate(-45deg) translateX(4px);
+            margin-left: 10px;
+            position: relative;
+            left: 5px;
+        }
+    }
+
+
+
+
+}

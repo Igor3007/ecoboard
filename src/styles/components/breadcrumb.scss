@@ -1,0 +1,136 @@
+@use "../helpers/functions";
+@use "../helpers/variables";
+
+.breadcrumb {
+
+    background-color: transparent;
+    padding: 0 0 4px 0;
+
+    @media screen and (min-width: variables.$w760) {
+        padding: 0 0 17px 0;
+    }
+
+    &>ul {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scrollbar-width: none;
+
+        @-moz-document url-prefix() {
+            scrollbar-color: transparent transparent;
+            scrollbar-width: thin !important;
+        }
+
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            border-radius: 4px;
+        }
+
+        &>li {
+            &:last-child {
+
+                &::after {
+                    display: none;
+                }
+
+                & span,
+                & a {
+                    color: variables.$gray-56;
+
+
+
+                }
+            }
+        }
+    }
+
+    & li {
+
+        display: flex;
+        align-items: center;
+
+        & a {
+            color: #000;
+
+            &:hover {
+                color: variables.$main;
+            }
+        }
+
+        & a,
+        & span {
+            @media screen and (min-width: variables.$w760) {
+                font-size: 18px;
+             }
+        }
+
+        &::after {
+            content: '';
+            margin: 0 functions.rem(10);
+            color: #7A808D;
+            display: inline-block;
+            border-radius: 50%;
+            position: relative;
+            width: 24px;
+            height: 1px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: variables.$border-01;
+
+        }
+
+
+    }
+
+
+
+
+    &--sub {
+
+        &>ul {
+            //  overflow: visible;
+
+            &>li {
+                &:last-child {
+
+                    &::after {
+                        display: none;
+                    }
+
+                    & span,
+                    & a {
+                        color: variables.$gray-56;
+                    }
+                }
+            }
+        }
+
+        & li {
+            &::after {
+                content: '—';
+                background-image: none;
+                margin: 0 10px 0px 2px;
+            }
+
+
+        }
+    }
+
+
+
+}
+

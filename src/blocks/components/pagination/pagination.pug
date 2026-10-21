@@ -1,0 +1,17 @@
+mixin pagination(data)
+ 
+      .pagination
+        .pagination__page
+          ul
+            li.prev: a(href="#2")
+              +icons('#ic_prev-pagination', 10) 
+              span Назад 
+
+            li: a(href="#1") 1
+            li.active: a(href="#2") 2
+            li: a(href="#3") 3
+            li: a(href="#4") ...
+            li: a(href="#10") 10
+            li.next: a(href="#2")
+              span Вперед 
+              +icons('#ic_next-pagination', 10) 

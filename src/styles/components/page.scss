@@ -1,0 +1,14 @@
+@use "../base/general";
+
+.section-page {
+	padding-top: 18px;
+}
+
+.page {
+    & h1 {
+        @include general.font-h1;
+        margin: 0;
+    }
+
+
+}

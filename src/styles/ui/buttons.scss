@@ -49,6 +49,8 @@
         margin-right: 1em;
     }
 
+
+
     &.btn-gray {
         background-color: variables.$bg-01;
         color: #000;
@@ -62,6 +64,7 @@
     &.btn-white {
         background-color: #fff;
         color: #000;
+        font-weight: 400;
 
         &:hover {
             background-color: variables.$gray-92;

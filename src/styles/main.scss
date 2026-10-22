@@ -7,6 +7,8 @@
 @use "base/common";
 
 @use "ui/buttons";
+@use "ui/fotmated-text.scss";
+@use "ui/fslightbox-theme.scss";
 
 @use "common/header";
 @use "common/footer";
@@ -20,3 +22,6 @@
 @use "components/main-slider.scss";
 @use "components/breadcrumb.scss";
 @use "components/page.scss";
+@use "components/product-detail.scss";
+@use "components/product-tabs.scss";
+@use "components/product-componets.scss";

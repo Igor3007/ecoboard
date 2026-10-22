@@ -1,0 +1,560 @@
+@use "../helpers/variables";
+@use "../helpers/mixins";
+@use "../base/general";
+
+.product-card-item.product-detail {
+    margin-top: 16px;
+}
+
+// --- Специфичные стили для детальной страницы ---
+.product-detail {
+
+    // Переопределяем внутреннюю раскладку для этой страницы
+    .product-card {
+
+        background-color: transparent;
+        padding: 0;
+
+        &__inner {
+
+            gap: 16px;
+
+            @media screen and (max-width: variables.$w1024) {
+                flex-direction: column !important ;
+            }
+
+            @media screen and (min-width: variables.$w1024) {
+                flex-direction: row !important;
+            }
+            @media screen and (min-width: variables.$w760) {
+                align-items: stretch; // Растягиваем колонки по высоте
+            }
+        }
+
+        &__media-col {
+
+            background-color: variables.$bg-01;
+            width: 100%;
+            padding: 16px 16px 32px 16px;
+            border-radius: 12px;
+
+            @media screen and (min-width: variables.$w1200) {
+                width: 50%;
+                flex-shrink: 0;
+                padding: 24px;
+            }
+
+            @media screen and (min-width: variables.$w1440) {
+                padding: 36px;
+            }
+
+            @media screen and (min-width: variables.$w1660) {
+                padding: 48px;
+            }
+        }
+
+        &__content-col {
+
+            background-color: variables.$bg-01;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 16px;
+            border-radius: 12px;
+
+            @media screen and (min-width: variables.$w1200) {
+                max-width: 50%;
+                padding: 24px;
+            }
+
+            @media screen and (min-width: variables.$w1440) {
+                padding: 36px;
+            }
+            @media screen and (min-width: variables.$w1660) {
+                padding: 48px;
+            }
+        }
+
+        &__title {
+            font-size: 28px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: variables.$text-01;
+            margin-top: 0;
+
+            @media screen and (min-width: variables.$w992) {
+                font-size: 36px;
+            }
+
+            @media screen and (min-width: variables.$w1440) {
+                font-size: 40px;
+            }
+            @media screen and (min-width: variables.$w1660) {
+                font-size: 44px;
+            }
+
+
+        }
+
+        &__desc {
+            margin-bottom: 20px;
+            @include mixins.line-clamp(2);
+        }
+
+
+    }
+
+
+
+    // --- Кнопка "Подробнее" (Аккордеон) ---
+    &__more {
+        margin-bottom: 30px;
+
+        @media screen and (min-width: variables.$w1440) {
+            margin-bottom: 38px;
+        }
+
+        &-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: variables.$main;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            transition: opacity 0.3s;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            svg {
+                transition: transform 0.3s ease;
+            }
+        }
+
+        // Поворот стрелки при открытии
+        &[open] {
+            .product-detail__more-btn svg {
+                transform: rotate(180deg);
+            }
+        }
+
+        &-text {
+            padding-top: 16px;
+            font-size: 15px;
+            line-height: 1.5;
+            color: variables.$text-02;
+            animation: slideDown 0.3s ease;
+        }
+    }
+
+    // --- Блок с ценой ---
+    &__price-box {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 30px;
+
+        @media screen and (min-width: variables.$w1440) {
+            padding: 26px;
+            margin-bottom: 40px;
+        }
+
+        @media screen and (min-width: variables.$w992) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__price-wrap {
+        flex-shrink: 0;
+    }
+
+    &__price-value {
+        font-weight: 700;
+        font-size: 24px;
+        color: variables.$text-01;
+        margin-bottom: 4px;
+        white-space: nowrap;
+
+        @media screen and (min-width: variables.$w1440) {
+            font-size: 28px;
+        }
+    }
+
+    &__price-note {
+        font-size: 13px;
+        color: variables.$gray-48;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+
+        @media screen and (min-width: variables.$w576) {
+            flex-direction: row;
+        }
+
+        @media screen and (min-width: variables.$w992) {
+            width: auto;
+        }
+
+        .btn {
+            width: 100%;
+            padding-inline: 1em;
+
+            @media screen and (min-width: variables.$w576) {
+                width: auto;
+            }
+
+            svg {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    // --- Блок цветов ---
+    &__colors {
+        margin-bottom: 30px;
+
+        @media screen and (min-width: variables.$w1440) {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__color-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 16px;
+
+        @media screen and (max-width: variables.$w576) {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scrollbar-width: none;
+                margin-right: -16px;
+
+                & > div {
+                    min-width: 60px;
+                }
+        }
+
+    }
+
+    &__color-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: calc(25% - 9px); // 4 в ряд
+        max-width: 80px;
+
+        @media screen and (max-width: variables.$w576) {
+            width: calc(33.33% - 8px); // 3 в ряд на мобилке
+        }
+    }
+
+    &__color-swatch {
+        width: 100%;
+        aspect-ratio: 80/48;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &__color-name {
+        font-size: 11px;
+        color: variables.$text-02;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    &__color-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: variables.$text-01;
+        padding: 12px 17px;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #dedede;
+        width: 100%;
+
+
+
+        svg {
+            flex-shrink: 0;
+        }
+    }
+
+    // --- Характеристики ---
+    &__features {
+        margin-top: auto; // Прижимаем к низу, если есть пустое место
+    }
+
+    &__features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 16px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+
+        @media screen and (min-width: variables.$w576) {
+            grid-template-columns: 1fr 1fr; // В 2 колонки на планшетах/десктопе
+            column-gap: 30px;
+        }
+
+        @media screen and (min-width: variables.$w1440) {
+            gap: 16px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 28px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: variables.$text-01;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+
+            // Красная галочка
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 2px;
+                width: 18px;
+                height: 18px;
+                background-color: variables.$main;
+                border-radius: 50%;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+                background-size: 12px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            span {
+                color: variables.$gray-48;
+            }
+
+            b {
+                font-weight: 600;
+                color: variables.$text-01;
+                text-align: right;
+            }
+        }
+    }
+
+    &__features-more {
+        &-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: variables.$main;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            svg {
+                transition: transform 0.3s ease;
+            }
+        }
+
+        &[open] {
+            .product-detail__features-more-btn svg {
+                transform: rotate(180deg);
+            }
+
+            .product-detail__features-list--hidden {
+                display: grid;
+                margin-top: 12px;
+                animation: slideDown 0.3s ease;
+            }
+        }
+
+        .product-detail__features-list--hidden {
+            display: none;
+        }
+    }
+}
+
+// ================= ГАЛЕРЕЯ (Splide) =================
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__main {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+
+        .splide__track {
+            border-radius: 12px;
+        }
+    }
+
+    &__main-slide {
+        position: relative;
+        width: 100%;
+        padding-top: 75%; // Соотношение сторон 4:3
+        background: #fff;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; // Вписываем картинку целиком
+            padding: 20px;
+        }
+    }
+
+    &__thumbs {
+
+        display: none;
+
+        @media screen and (min-width: variables.$w576) {
+            display: block;
+        }
+
+        .splide__list {
+            display: flex;
+            justify-content: center;
+        }
+
+        .splide__track {
+            padding: 2px;
+        }
+
+        .splide__slide {
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+            cursor: pointer;
+            opacity: 0.6;
+
+            &.is-active {
+                border-color: variables.$main;
+                opacity: 1;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__thumb-slide {
+        position: relative;
+        width: 100%;
+        padding-top: 100%; // Квадратные миниатюры
+        background: #fff;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid transparent;
+        background-color: #fff;
+        transition: 0.3s ease;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+        }
+    }
+
+    & .splide {
+        overflow: visible;
+
+        &__slide {
+            border: none !important;
+
+            &.is-active {
+                border: none !important;
+
+                & .product-gallery__thumb-slide {
+                    border-color: variables.$accent-1-1;
+                }
+            }
+        }
+
+        &__arrow {
+            background-color: transparent;
+            opacity: 0;
+            transition: 0.3s ease;
+
+            & svg path {
+                fill: var(--accent);
+            }
+        }
+
+        &:hover {
+            & .splide {
+                &__arrow {
+                    @media screen and (min-width: variables.$w576) {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &__pagination {
+            bottom: -21px;
+
+            &__page {
+                width: 8px;
+                height: 4px;
+                background-color: variables.$border-01;
+                border-radius: 10px;
+                opacity: 1;
+                transition: 0.3s ease;
+
+                &.is-active {
+                    width: 24px;
+                    background-color: variables.$accent-1-1;
+                    transform: scale(1);
+                }
+            }
+        }
+
+    }
+}
+
+// Анимация выпадающего списка
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,138 @@
+@use "../helpers/variables"; // Проверьте правильность пути
+
+.formated-text {
+    font-size: 15px;
+    color: variables.$text-01;
+
+    & * {
+        line-height: 160%;
+    }
+
+    & h1, & h2, & h3, & h4, & h5, & h6 {
+        margin-bottom: 20px;
+        line-height: 120%;
+        font-weight: 700;
+        margin-top: 1.5em;
+        color: variables.$text-01;
+    }
+
+    // Таблицы
+    & .table {
+        overflow-x: auto;
+        margin: 30px 0;
+    }
+
+    & table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid variables.$border-01;
+        border-radius: 8px;
+        overflow: hidden;
+
+        & th {
+            padding: 16px;
+            background-color: variables.$bg-01;
+            color: variables.$text-01;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: left;
+            border-bottom: 1px solid variables.$border-01;
+
+            @media screen and (min-width: variables.$w760) {
+                padding: 20px;
+            }
+        }
+
+        & td {
+            padding: 16px;
+            border-bottom: 1px solid variables.$border-01;
+            font-size: 15px;
+            color: variables.$text-02;
+
+            @media screen and (min-width: variables.$w760) {
+                padding: 20px;
+            }
+        }
+
+        & tr:last-child td {
+            border-bottom: none;
+        }
+
+        & tr:hover td {
+            background-color: #fafafa;
+        }
+    }
+
+    // Списки с кастомными чекбоксами (для описания)
+    & ul.check-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        & li {
+            position: relative;
+            padding-left: 32px;
+            font-size: 15px;
+            color: variables.$text-01;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 2px;
+                width: 20px;
+                height: 20px;
+                background-color: variables.$main;
+                border-radius: 50%;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+                background-size: 14px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+    // Обычные списки (маркеры)
+    & ul:not(.check-list) {
+        margin: 19px 0;
+        padding-left: 20px;
+
+        & li {
+            position: relative;
+            padding-bottom: 8px;
+
+            &::before {
+                content: '';
+                width: 6px;
+                height: 6px;
+                display: block;
+                position: absolute;
+                left: -15px;
+                top: 0.6em;
+                border-radius: 50%;
+                background-color: variables.$main;
+            }
+        }
+    }
+
+    & blockquote {
+        background-color: variables.$bg-01;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid variables.$main;
+    }
+
+    & a {
+        color: variables.$main;
+        text-decoration: underline;
+    }
+
+    & p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+}

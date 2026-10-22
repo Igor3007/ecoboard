@@ -1,0 +1,69 @@
+//- 1. Описание
+mixin tab-description(title, text, listItems)
+  .tab-content__inner.formated-text
+    h2= title
+    p= text
+    p: strong Каждая доска проходит идентичную обработку, что гарантирует:
+    if listItems && listItems.length > 0
+      //- Используем класс check-list для галочек
+      ul.check-list
+        each item in listItems
+          li= item
+
+//- 2. Характеристики
+mixin tab-specs(title, tableData)
+  .tab-content__inner.formated-text
+    h2= title
+    .table.table-char
+      table
+          tr
+            th= tableData.header.col1
+            th= tableData.header.col2
+          each row in tableData.rows
+            tr
+              td= row.col1
+              td= row.col2
+
+//- 3. Сертификаты
+mixin tab-certificates(title, certificates)
+  .tab-content__inner
+    h2.tab-content__title= title
+    .certs-slider.splide
+      .splide__track
+        ul.splide__list
+          each cert in certificates
+            li.splide__slide
+              .cert-card
+                .cert-card__image
+                  a(href=cert.image data-fslightbox="cert"): img(src=cert.image, alt=cert.title)
+              .cert-card__title= cert.title
+
+
+//- ==========================================
+//- ОСНОВНОЙ БЛОК
+//- ==========================================
+
+//- Миксины остаются без изменений (описание, характеристики, сертификаты)
+//- Я добавил id к секциям для якорей
+
+mixin product-content-sections(data)
+  section.section-product-sections
+    .container
+      .product-sections
+        //- Липкое меню навигации
+        nav.product-sections__nav
+          a.product-sections__link(href="#section-description") Описание товара
+          a.product-sections__link(href="#section-specs") Характеристики
+          a.product-sections__link(href="#section-certs") Сертификаты
+
+        //- Блок 1: Описание
+        .product-sections__block#section-description
+          +tab-description(data.description.title, data.description.text, data.description.list)
+
+        //- Блок 2: Характеристики
+        .product-sections__block#section-specs
+          +tab-specs(data.specs.title, data.specs.table)
+
+        //- Блок 3: Сертификаты
+        .product-sections__block#section-certs
+          +tab-certificates(data.certs.title, data.certs.items)

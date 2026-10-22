@@ -1,0 +1,46 @@
+//- Миксин для одной карточки товара
+mixin accessory-card(item)
+  .accessory-card
+    //- Левая часть: Изображение и Заголовок
+    .accessory-card__main
+      .accessory-card__image
+        img(src=item.image, alt=item.title, loading="lazy")
+      .accessory-card__info
+        h3.accessory-card__title= item.title
+        p.accessory-card__desc= item.description
+        .accessory-card__meta
+          if item.size
+            span Размер: #{item.size}
+          if item.color
+            span Цвет #{item.color}
+          if item.weight
+            span Вес: #{item.weight}
+          if item.mount
+            span Тип монтажа: #{item.mount}
+
+    //- Правая часть: Цена и Кнопки
+    .accessory-card__actions
+      .accessory-card__price-wrap
+        .accessory-card__price-title Цена по запросу
+        .accessory-card__price-note Точную цену уточняйте у менеджера
+
+      .accessory-card__buttons
+        //- Конструкция кнопок из вашего примера
+        a(href="#")
+          button.btn.btn-red
+            +icons('#ic_order')
+            span Заказать
+
+        a(href="#")
+          button.btn.btn-gray
+            +icons('#ic_callback')
+            span Получить консультацию
+
+
+mixin products-componets(data)
+  section.accessories-section
+    .container
+      .accessories-list
+        //- Перебираем массив данных
+        each item in data
+          +accessory-card(item)

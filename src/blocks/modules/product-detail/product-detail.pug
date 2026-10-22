@@ -1,0 +1,90 @@
+mixin product-detail(data)
+  .product-card-item.product-detail
+    .container
+      .product-card
+        .product-card__inner
+          //- ================= ЛЕВАЯ КОЛОНКА (Галерея) =================
+          .product-card__media-col
+            .product-gallery
+              //- Основной слайдер
+              .product-gallery__main.splide
+                .splide__track
+                  ul.splide__list
+                    each img, index in data.images
+                      li.splide__slide
+                        .product-gallery__main-slide
+                          a(href=img.src data-fslightbox="product"): img(src=img.src, alt=`${data.title} - ${index + 1}`)
+
+              //- Миниатюры (синхронизированы с основным)
+              .product-gallery__thumbs.splide
+                .splide__track
+                  ul.splide__list
+                    each img, index in data.images
+                      li.splide__slide
+                        .product-gallery__thumb-slide
+                          img(src=img.thumb, alt="Миниатюра")
+
+          //- ================= ПРАВАЯ КОЛОНКА (Контент) =================
+          .product-card__content-col
+            h1.product-card__title= data.title
+
+            .product-card__desc= data.shortDesc
+
+            //- Кнопка "Подробнее о товаре"
+            details.product-detail__more
+              summary.product-detail__more-btn
+                span Подробнее о товаре
+                svg(width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg")
+                  path(d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
+              .product-detail__more-text
+                p= data.fullDesc
+
+            //- Блок с ценой и кнопками
+            .product-detail__price-box
+              .product-detail__price-wrap
+                .product-detail__price-value от #{data.price} ₽ / м²
+                .product-detail__price-note Точную цену уточняйте у менеджера
+              .product-detail__actions
+                a(href="#")
+                  button.btn.btn-red
+                    +icons('#ic_order')
+                    span Заказать сайдинг
+
+
+                a(href="#")
+                  button.btn.btn-gray
+                    +icons('#ic_callback')
+                    span Получить консультацию
+
+            //- Блок цветов
+            if !data.disableColor
+              .product-detail__colors
+                h3.product-card__subtitle= data.colorsTitle
+                .product-detail__color-grid
+                  each color in data.colors
+                    .product-detail__color-item
+                      .product-detail__color-swatch(style=`background-color: ${color.hex}`)
+                      span.product-detail__color-name= color.code
+
+                .product-detail__color-note
+                  svg(width="16" height="16" viewBox="0 0 24 24" fill="#DF1F26")
+                    circle(cx="12" cy="12" r="10")
+                    path(d="M12 8v4m0 4h.01" stroke="#fff" stroke-width="2" stroke-linecap="round")
+                  span Покраска в любой цвет RAL, NC, Monicolor или Московской палитры
+
+            //- Характеристики
+            .product-detail__features
+              h3.product-card__subtitle= data.featuresTitle
+              ul.product-detail__features-list
+                each feature in data.features
+                  li
+                    span= feature.label
+                    if feature.value
+                      b= feature.value
+
+                .product-detail__features-more-btn
+                    span Все особенности
+                    svg(width="10" height="6" viewBox="0 0 10 6" fill="none")
+                      path(d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
+
+

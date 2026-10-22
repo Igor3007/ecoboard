@@ -1,5 +1,9 @@
 @use "../helpers/variables";
 
+:root {
+    --accent: #f00
+}
+
 html {
     font-family: 'Wix Madefor Text', 'Trebuchet MS', Helvetica, sans-serif;
     font-weight: 400;

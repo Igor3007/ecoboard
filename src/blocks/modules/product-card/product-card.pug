@@ -35,7 +35,7 @@ mixin product-card(data)
               .product-card__price= data.price
 
               .product-card__actions
-                a.btn.btn(href="/products-details.html")= data.button
+                a.btn.btn(href=data.details)= data.button
                 a.btn.btn-white(href="#") Оставить заявку
 
           // Right Column: Image

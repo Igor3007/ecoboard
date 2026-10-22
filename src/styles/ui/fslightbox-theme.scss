@@ -1,0 +1,42 @@
+body .fslightbox-container {
+    background:#fff
+  }
+  body .fslightbox-slide-btn,
+  body .fslightbox-toolbar {
+    border-radius:8px
+  }
+  body .fslightbox-svgp {
+    fill:var(--accent)
+  }
+  body .fslightbox-toolbar-button:hover .fslightbox-svgp {
+    fill:var(--accent);
+    opacity:.5
+  }
+  body .fslightbox-slide-btn-container:hover .fslightbox-svgp {
+    fill:var(--accent);
+    opacity:.8
+  }
+  body .fslightbox-slide-btn-container:hover .fslightbox-slide-btn {
+    background-color:#eee
+  }
+  body .fslightbox-slide-number-container {
+    color:var(--accent)
+  }
+  body .fslightbox-slash {
+    background:var(--accent)
+  }
+
+  body .fslightboxb {
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+body  .fslightboxsn {
+	color: #000;
+    font-size: 18px;
+}
+body  .fslightbox-toolbar-button:hover {
+	background-color: #eee;
+    border-radius: 8px;
+}

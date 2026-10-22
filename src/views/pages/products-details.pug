@@ -1,9 +1,12 @@
 extends ../layouts/home
 
-include ../../blocks/modules/product-card/product-card.pug
+include ../../blocks/modules/product-detail/product-detail.pug
 include ../../blocks/modules/objects/objects.pug
 include ../../blocks/modules/reviews/reviews.pug
 include ../../blocks/modules/faq/faq.pug
+include ../../blocks/modules/about-us/about-us.pug
+include ../../blocks/modules/product-tabs/product-tabs.pug
+
 include ../../blocks/components/breadcrumb/breadcrumb.pug
 
 
@@ -23,58 +26,9 @@ block content
                     ])
 
 
-    section.section-product-cart
-        +product-card({
-            label: 'Фиброцементный сайдинг',
-            title: 'ЭкоБоард Классик',
-            list: [
-                'Размер: 200*3000*8 мм',
-                'Монтаж: внахлёст ёлочкой',
-                'Фактура: дерево',
-                'Материал: фиброцемент (целлюлоза)',
-                'Площадь общая: 0,6 м²',
-                'Площадь полезная (при монтаже ёлочкой): 0,51 м²',
-            ],
-            button: 'Подробнее про Классик',
-            img: '/img/product/img-frame.png',
-            price: 'от 6 400 ₽ / м²'
-        })
-
-
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-    br
-
-
+    +product-detail(app.productData)
+    +product-content-sections(app.productTabsData)
+    +about(app.aboutHeroDetails)
     +objects
     +reviews
     +faq(app.faqData)

@@ -22,7 +22,7 @@
   // --- ЛЕВАЯ КОЛОНКА ---
   &__content-col {
     position: relative;
-    padding: 40px 16px 24px;
+    padding: 40px 16px 8px;
     display: flex;
     flex-direction: column;
     z-index: 2;
@@ -131,6 +131,14 @@
     width: 100%;
     margin-bottom: 40px;
 
+    @media screen and (max-width: variables.$w576) {
+    margin-bottom: 0;
+    }
+
+    & .btn {
+        width: 100%;
+    }
+
     @media screen and (min-width: variables.$w576) {
       width: auto;
       display: inline-flex;
@@ -155,20 +163,26 @@
       opacity: 0.9;
     }
 
+    @media screen and (max-width: variables.$w992) {
+    margin-top: 16px;
+    }
+
     @media screen and (min-width: variables.$w992) {
-      max-width: 480px;
+      max-width: 380px;
       position: absolute; // Позиционируем поверх стыка колонок на десктопе
-      bottom: -40px;
-      left: 40px;
+      right: 24px;
+      bottom: 24px;
+        left: auto;
       width: 100%;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       z-index: 10;
     }
 
     @media screen and (min-width: variables.$w1440) {
-        left: 123%;
-    max-width: 380px;
-    bottom: 4px;
+        right: 45px;
+        bottom: 40px;
+        left: auto;
+
     }
   }
 
@@ -219,7 +233,7 @@
   // --- ПРАВАЯ КОЛОНКА (Карточки) ---
   &__features-col {
     position: relative;
-    padding: 24px 16px 40px;
+    padding: 8px 16px 40px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -231,8 +245,12 @@
 
     @media screen and (min-width: variables.$w992) {
       width: 33%;
-      padding: 60px 40px 60px 80px; // Увеличенный левый отступ, чтобы карточки не наезжали на треугольник
+      padding: 40px; // Увеличенный левый отступ, чтобы карточки не наезжали на треугольник
       justify-content: center;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+        padding: 60px 40px 60px 80px;
     }
   }
 

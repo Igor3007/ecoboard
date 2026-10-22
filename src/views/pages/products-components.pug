@@ -1,0 +1,36 @@
+extends ../layouts/home
+
+include ../../blocks/modules/product-componets/product-componets.pug
+include ../../blocks/modules/objects/objects.pug
+include ../../blocks/modules/reviews/reviews.pug
+include ../../blocks/modules/faq/faq.pug
+include ../../blocks/modules/about-us/about-us.pug
+
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+
+block variables
+  include ../../data/data.pug
+  - const title = "Продукция - Комплектующие"
+
+block content
+    section.section-page
+        .container
+            .page
+                .page__breadcrumbs
+                    +breadcrumb([
+                        'Главная',
+                        'Продукция',
+                        'Комплектующие',
+                    ])
+                .page__h1: h1 Комплектующие
+
+
+    +products-componets(app.accessoriesData)
+    +about(app.aboutHeroDetails)
+    +objects
+    +reviews
+    +faq(app.faqData)
+
+block scripts
+  script(src="/js/common.js")

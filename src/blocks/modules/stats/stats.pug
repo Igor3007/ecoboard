@@ -1,5 +1,5 @@
-mixin stats(data)
-  section.stats-section
+mixin stats(data, modify)
+  section.stats-section(class=modify)
     .container
       .stats-section__grid
         each item in data

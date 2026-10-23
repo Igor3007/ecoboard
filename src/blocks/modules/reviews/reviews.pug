@@ -1,14 +1,48 @@
-mixin reviews
+mixin review-card(item)
+
+    .review-card
+      .review-card__header
+        .review-card__avatar(
+          style=`background-color: ${item.avatarBg || '#F5F5F5'}; color: ${item.avatarColor || '#555'};`
+        )
+          if item.avatarImg
+            img(src=item.avatarImg, alt=item.name)
+          else
+            span M
+
+        .review-card__info
+          .review-card__name= item.name
+
+      .review-card__meta
+        .review-card__stars
+          - for (let i = 0; i < item.rating; i++)
+            svg(width="16" height="16" viewBox="0 0 24 24" fill="#FFD223")
+              path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
+        span.review-card__date= item.date
+
+      .review-card__text
+        p= item.text
+
+      if item.hasMore
+        button.review-card__more(type="button")
+          span Читать далее
+          svg(width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+            path(d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6")
+            polyline(points="15 3 21 3 21 9")
+            line(x1="10" y1="14" x2="21" y2="3")
+
+
+mixin reviews(data)
   section.reviews-section
     .container
       .reviews-section__header
         h2.reviews-section__title Отзывы о нас
-        //- Кнопки навигации для десктопа (если нужны)
+        //- Кнопки навигации для десктопа
         .reviews-section__nav.hide--mobile
-          button.reviews-section__nav-btn.reviews-section__nav-btn--prev(type="button" aria-label="Назад")
+          button.reviews-section__nav-btn.reviews-section__nav-btn--prev.js-prev(type="button" aria-label="Назад")
             svg(width="12" height="12" viewBox="0 0 12 12" fill="none")
               path(d="M7.5 10.5L3 6L7.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
-          button.reviews-section__nav-btn.reviews-section__nav-btn--next(type="button" aria-label="Вперед")
+          button.reviews-section__nav-btn.reviews-section__nav-btn--next.js-next(type="button" aria-label="Вперед")
             svg(width="12" height="12" viewBox="0 0 12 12" fill="none")
               path(d="M4.5 1.5L9 6L4.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
 
@@ -17,83 +51,11 @@ mixin reviews
         .reviews-section__slider.splide
           .splide__track
             ul.splide__list
-              //- Карточка 1
-              li.splide__slide
-                .review-card
-                  .review-card__header
-                    .review-card__avatar(style="background-color: #FCE8F0; color: #DF1F26;")
-                       img(src="/img/product/about-company.jpg" alt="Елена")
-                    .review-card__info
-                      .review-card__name Филимон Ковалев
-                  .review-card__meta
-                    .review-card__stars
-                      - for (let i = 0; i < 5; i++)
-                        svg(width="16" height="16" viewBox="0 0 24 24" fill="#FFD223")
-                          path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
-                    span.review-card__date 8 мая
-                  .review-card__text
-                    p Приветливый персонал, все подробно объясняют, советуют как выйдет лучше и дешевле. Продукция высшего качества, доставка в срок.
+              //- Перебираем массив данных и вызываем миксин карточки
+              each item in data.reviews
+                li.splide__slide: +review-card(item)
 
-              //- Карточка 2
-              li.splide__slide
-                .review-card
-                  .review-card__header
-                    .review-card__avatar(style="background-color: #F5F5F5; color: #555;") М
-                    .review-card__info
-                      .review-card__name Маша
-                  .review-card__meta
-                    .review-card__stars
-                      - for (let i = 0; i < 5; i++)
-                        svg(width="16" height="16" viewBox="0 0 24 24" fill="#FFD223")
-                          path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
-                    span.review-card__date 4 августа 2025
-                  .review-card__text
-                    p Компания работает на твердую пятерку по пятибалльной системе, могу отметить только плюсы: точный расчет, быстрая доставка, качественная продукция, доступные цены, компания...
-                  button.review-card__more(type="button")
-                    span Читать далее
-                    svg(width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-                      path(d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6")
-                      polyline(points="15 3 21 3 21 9")
-                      line(x1="10" y1="14" x2="21" y2="3")
-
-              //- Карточка 3
-              li.splide__slide
-                .review-card
-                  .review-card__header
-                    .review-card__avatar(style="background-color: #333;")
-                      img(src="/img/product/about-company.jpg" alt="Елена")
-                    .review-card__info
-                      .review-card__name Елена Атрашкевич
-                  .review-card__meta
-                    .review-card__stars
-                      - for (let i = 0; i < 5; i++)
-                        svg(width="16" height="16" viewBox="0 0 24 24" fill="#FFD223")
-                          path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
-                    span.review-card__date 29 июля 2025
-                  .review-card__text
-                    p Все быстро и качественно! Спасибо большое Руслану ,все сделал так как мы и запланировали !! Обязательно обратимся ещё раз к вам.
-              //- Карточка 4
-              li.splide__slide
-                .review-card
-                  .review-card__header
-                    .review-card__avatar(style="background-color: #F5F5F5; color: #555;") C
-                    .review-card__info
-                      .review-card__name Cаша
-                  .review-card__meta
-                    .review-card__stars
-                      - for (let i = 0; i < 5; i++)
-                        svg(width="16" height="16" viewBox="0 0 24 24" fill="#FFD223")
-                          path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
-                    span.review-card__date 4 августа 2025
-                  .review-card__text
-                    p Пятибалльной системе, могу отметить только плюсы: точный расчет, быстрая доставка, качественная продукция, доступные цены, компания...
-                  button.review-card__more(type="button")
-                    span Читать далее
-                    svg(width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-                      path(d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6")
-                      polyline(points="15 3 21 3 21 9")
-                      line(x1="10" y1="14" x2="21" y2="3")
-        //- Блок Яндекс (сайдбар на десктопе, блок снизу на мобилке)
+        //- Блок Яндекс
         .reviews-section__sidebar
           .yandex-reviews
             .yandex-reviews__logo: +bgimage('/img/common/logo-yandex.svg')
@@ -106,5 +68,5 @@ mixin reviews
                 .yandex-reviews__rating-value
                   svg(width="20" height="20" viewBox="0 0 24 24" fill="#FFD223")
                     path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
-                  span 4.9
-              .yandex-reviews__btn: a(href="#" target="_blank"): button.btn Читать все отзывы
+                  span= data.yandexRating
+              .yandex-reviews__btn: a(href=data.yandexLink target="_blank"): button.btn Читать все отзывы

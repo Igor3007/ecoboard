@@ -1,0 +1,34 @@
+mixin company-info(data)
+  section.company-info
+    .container
+      .company-info__inner
+
+        //- Левая колонка (или верхняя на мобилке): Картинка
+        .company-info__media
+          .company-info__image
+            img(src=data.image, alt=data.imageAlt, loading="lazy")
+
+
+        //- Правая колонка (или нижняя на мобилке): Текст
+        .company-info__content
+
+
+          //- Блок "Наша миссия" с серым фоном
+          .company-info__mission
+            h3.company-info__mission-title!= data.title
+            p.company-info__mission-text= data.description
+
+          //- Блок "Наша миссия" с серым фоном
+          .company-info__mission
+            h3.company-info__mission-title= data.mission.title
+            p.company-info__mission-text= data.mission.text
+
+
+          //- Видео-баннер (на десктопе позиционируется поверх, на мобилке идет в потоке)
+          a(href='/json/2b43054b3fee264029060016f5acbc0487802ede.mp4' data-fslightbox="v").company-info__video
+            .company-info__video-info
+              h3.company-info__video-title= data.video.title
+              p.company-info__video-subtitle= data.video.subtitle
+            button.company-info__video-btn(type="button" aria-label="Смотреть видео")
+              svg(width="16" height="18" viewBox="0 0 16 18" fill="none")
+                path(d="M15.5 9L0.5 17.5V0.5L15.5 9Z" fill="currentColor")

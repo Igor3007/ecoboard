@@ -1,0 +1,11 @@
+include ../about-us/about-us.pug
+
+mixin advantages(data)
+    section.section-advantages
+        .container
+            .advantages
+                .advantages__title: h2 Преимущества ЭкоБоард
+                .advantages__list
+                    each item in data
+                        .advantages__item: +feature-card(item)
+

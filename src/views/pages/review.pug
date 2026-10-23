@@ -1,0 +1,40 @@
+extends ../layouts/home
+
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+include ../../blocks/modules/objects/objects.pug
+include ../../blocks/modules/reviews/reviews.pug
+include ../../blocks/modules/faq/faq.pug
+
+
+
+block variables
+  include ../../data/data.pug
+  - const title = "Продукция - Все объекты"
+
+block content
+    section.section-page
+        .container
+            .page
+                .page__breadcrumbs
+                    +breadcrumb([
+                        'Главная',
+                        'Отзывы о нас',
+                    ])
+                .page__h1: h1 Отзывы о нас
+
+    section.section-page-reviews
+        .container
+            .page-reviews
+                .page-reviews__list
+                    each item in [...app.reviewsData.reviews, ...app.reviewsData.reviews, ...app.reviewsData.reviews]
+                        .page-reviews__item: +review-card(item)
+
+
+
+
+    +faq(app.faqData)
+
+
+block scripts
+  script(src="/js/common.js")

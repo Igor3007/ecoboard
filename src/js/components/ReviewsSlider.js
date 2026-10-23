@@ -1,4 +1,5 @@
 import Splide from "@splidejs/splide";
+import fslightboxssssssssssssssssssssssssss from "fslightbox";
 
 export default class ReviewsSlider {
     constructor() {
@@ -7,6 +8,7 @@ export default class ReviewsSlider {
       this.prevBtn = null;
       this.nextBtn = null;
       this.init()
+      this.addEvents()
     }
 
     init() {
@@ -67,5 +69,18 @@ export default class ReviewsSlider {
         this.slider.destroy();
         this.slider = null;
       }
+    }
+
+    openPopupReview(e) {
+        e.stopPropagation()
+        const instance = new FsLightbox();
+        instance.props.sources = [e.target.closest('.review-card').cloneNode(true)];
+        instance.open();
+    }
+
+    addEvents() {
+        this.el.querySelectorAll('.review-card__more').forEach(item => {
+            item.addEventListener('click', (e) => this.openPopupReview(e))
+        })
     }
   }

@@ -1,0 +1,61 @@
+@use '../helpers/variables';
+
+.section-advantages {
+    padding-bottom: 0;
+
+    & + .objects {
+        padding-top: 45px;
+    }
+}
+
+.advantages {
+    padding: 35px 0;
+
+    &__title{
+        margin-bottom: 10px;
+        font-weight: 600;
+
+        @media screen and (min-width: variables.$w1440) {
+        font-size: 29px;
+        }
+    }
+
+    &__list{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 20px 0;
+
+        @media screen and (min-width: variables.$w1440) {
+            gap: 16px;
+        }
+    }
+
+    &__item{
+        flex-grow: 1;
+        flex-basis: 360px;
+
+        @media screen and (min-width: variables.$w1440) {
+        min-height: 160px;
+        }
+    }
+
+    .feature-card {
+        height: 100%;
+        border: 1px solid #dedede;
+        box-shadow: none;
+
+        @media screen and (min-width: variables.$w1440) {
+        align-items: flex-start;
+        }
+
+        &__icon{
+        @media screen and (min-width: variables.$w1440) {
+        margin-top: auto;
+        }
+        }
+
+    }
+
+}
+

@@ -1,3 +1,17 @@
+mixin feature-card(item)
+  .feature-card
+    .feature-card__content
+      h3.feature-card__title= item.title
+      p.feature-card__text= item.text
+    .feature-card__icon
+      //- Вставляем SVG иконку, переданную в данных (если она есть), либо заглушку
+      if item.icon === 'hexagon'
+          +bgimage('/img/icons/01.svg')
+      else if item.icon === 'puzzle'
+          +bgimage('/img/icons/02.svg')
+      else if item.icon === 'like'
+          +bgimage('/img/icons/03.svg')
+
 mixin about(data)
   section.section-.about-hero
     .container
@@ -33,15 +47,4 @@ mixin about(data)
             .about-hero__features-bg
             .about-hero__features-list
               each item in data.features
-                .feature-card
-                  .feature-card__content
-                    h3.feature-card__title= item.title
-                    p.feature-card__text= item.text
-                  .feature-card__icon
-                    //- Вставляем SVG иконку, переданную в данных (если она есть), либо заглушку
-                    if item.icon === 'hexagon'
-                        +bgimage('/img/icons/01.svg')
-                    else if item.icon === 'puzzle'
-                        +bgimage('/img/icons/02.svg')
-                    else if item.icon === 'like'
-                        +bgimage('/img/icons/03.svg')
+                +feature-card(item)

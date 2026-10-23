@@ -1,0 +1,30 @@
+mixin history-timeline(data)
+  section.history-section
+    .container
+      //- Заголовок и вводный текст
+      .history-section__header
+        h2.history-section__title= data.title
+        .history-section__intro
+          h3.history-section__subtitle= data.subtitle
+          each paragraph in data.introText
+            p= paragraph
+
+      //- Сетка карточек
+      .history-section__grid
+        each item, index in data.items
+
+
+          div.history-card
+            div.history-card__summary
+              .history-card__header
+                .history-card__date-wrap
+                  span.history-card__date-line
+                  span.history-card__date= item.date
+                h3.history-card__title= item.title
+
+              .history-card__content
+                p.history-card__text= item.text
+
+              .history-card__icon
+                  //- Используем ваш миксин для иконки
+                  +icons('#ic_plus')

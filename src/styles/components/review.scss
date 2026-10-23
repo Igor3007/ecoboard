@@ -313,14 +313,75 @@
     font-weight: 700;
     font-size: 24px;
     color: variables.$text-01;
+    min-width: 140px;
   }
 
   &__btn {
 
-    @media screen and (max-width: variables.$w375) {
-      width: 100%;
+    @media screen and (max-width: variables.$w576) {
+
+        width: 100%;
+
+      & .btn {
+        width: 100%;
+      }
     }
   }
 
 
+}
+
+.fslightbox-container {
+    & .review-card {
+        max-width: 700px;
+
+        &__text{
+            -webkit-line-clamp: unset;
+
+            & p {
+                -webkit-line-clamp: unset;
+            }
+        }
+
+        &__more{
+        display: none;
+        }
+    }
+}
+
+.section-page-reviews {
+    padding-top: 40px;
+}
+.page-reviews {
+    &__list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+
+    }
+
+    &__item{
+
+    flex-grow: 1;
+    flex-basis: 260px;
+
+    @media screen and (min-width: variables.$w1440) {
+        flex-basis: 465px;
+    }
+
+    @media screen and (min-width: variables.$w992) {
+        flex-basis: 480px;
+    }
+
+    @media screen and (min-width: variables.$w576) {
+        flex-basis: 360px;
+    }
+
+    & .review-card {
+        height: 100%;
+    }
+
+
+    }
 }

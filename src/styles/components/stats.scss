@@ -79,3 +79,23 @@
     flex-grow: 1; // Растягиваем текст на оставшееся место, если нужно
   }
 }
+
+.page--about-factory {
+    @media screen and (min-width: variables.$w1440) {
+        .stat-card {
+            &__value {
+                font-size: 36px;
+            }
+
+            &__text {
+                font-size: 18px;
+                line-height: 142%;
+                margin-bottom: -10px;
+            }
+
+            &__label {
+                font-size: 20px;
+            }
+        }
+    }
+}

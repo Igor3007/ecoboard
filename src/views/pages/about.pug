@@ -1,0 +1,36 @@
+extends ../layouts/home
+
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/modules/objects/objects.pug
+include ../../blocks/modules/reviews/reviews.pug
+include ../../blocks/modules/company-info/company-info.pug
+include ../../blocks/modules/stats/stats.pug
+include ../../blocks/modules/advantages/advantages.pug
+include ../../blocks/modules/history-timeline/history-timeline.pug
+
+
+block variables
+  include ../../data/data.pug
+  - const title = "Продукция - О заводе"
+
+block content
+    section.section-page
+        .container
+            .page
+                .page__breadcrumbs
+                    +breadcrumb([
+                        'Главная',
+                        'Продукция',
+                    ])
+                .page__h1: h1 О заводе ЭкоБоард
+
+
+    +company-info(app.companyInfoData)
+    +stats(app.statsData, 'page--about-factory')
+    +history-timeline(app.historyTimelineData)
+    +advantages(app.aboutHeroData.features)
+    +objects
+    +reviews(app.reviewsData)
+
+block scripts
+  script(src="/js/common.js")

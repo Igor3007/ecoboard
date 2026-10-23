@@ -1,0 +1,244 @@
+@use "../helpers/variables";
+@use "../base/general";
+@use "../helpers/mixins";
+
+.history-section {
+  padding: 40px 0;
+
+  @media screen and (min-width: variables.$w992) {
+    padding: 70px 0;
+  }
+
+  // --- Шапка блока ---
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+
+    @media screen and (min-width: variables.$w992) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 60px;
+      margin-bottom: 46px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    color: variables.$text-01;
+    margin: 0;
+
+    @media screen and (min-width: variables.$w992) {
+      font-size: 40px;
+      width: 40%;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
+        font-size: 44px;
+    }
+  }
+
+  &__intro {
+
+    line-height: 142%;
+
+    @media screen and (min-width: variables.$w992) {
+      width: 55%;
+      max-width: 890px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.4;
+      color: variables.$text-02;
+      margin: 0 0 16px 0;
+
+      @media screen and (min-width: variables.$w992) {
+        font-size: 16px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+    color: variables.$text-01;
+    margin: 0 0 12px 0;
+
+    @media screen and (min-width: variables.$w992) {
+      font-size: 20px;
+      margin: 0 0 22px 0;
+    }
+
+  }
+
+  // --- Сетка карточек ---
+  &__grid {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 16px;
+
+     & > div {
+        flex-grow: 1;
+        flex-basis: 480px;
+     }
+  }
+}
+
+// --- Карточка истории ---
+.history-card {
+  background-color: variables.$bg-01;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+
+  &:nth-child(even) {
+    background-color: variables.$bg-02;
+  }
+
+  // Широкая карточка (4-я в сетке)
+  &--wide {
+    @media screen and (min-width: variables.$w992) {
+      grid-column: span 2;
+    }
+  }
+
+  // Чтобы 5-я карточка встала рядом с 4-й
+  &:nth-child(5) {
+    @media screen and (min-width: variables.$w992) {
+      grid-column: span 1;
+    }
+  }
+
+  &__summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 24px;
+    cursor: pointer;
+    list-style: none;
+    min-height: 280px; // Чтобы карточки были одинаковой высоты
+    position: relative;
+
+    // Убираем стандартный маркер
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    @media screen and (min-width: variables.$w992) {
+      padding: 32px;
+      min-height: 320px;
+    }
+    @media screen and (min-width: variables.$w1440) {
+      padding: 26px;
+      min-height: 356px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 23px;
+  }
+
+  &__date-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__date-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: variables.$main;
+  }
+
+  &__date {
+    font-size: 14px;
+    color: variables.$text-02;
+    font-weight: 500;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.3;
+    color: variables.$text-01;
+    margin: 0;
+
+    @media screen and (min-width: variables.$w992) {
+      font-size: 22px;
+    }
+    @media screen and (min-width: variables.$w1440) {
+      font-size: 28px;
+    }
+  }
+
+  // Иконка плюса
+  &__icon {
+
+    width: 48px;
+    height: 48px;
+    background-color: variables.$main;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: auto;
+    color: #fff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    @media screen and (min-width: variables.$w992) {
+
+    }
+  }
+
+  // Ховер эффект
+  &:hover {
+    .history-card__icon {
+      background-color: variables.$accent-1-2;
+    }
+  }
+
+  // --- Раскрытый контент ---
+  &__content {
+
+
+    @media screen and (min-width: variables.$w992) {
+
+    }
+  }
+
+  &__text {
+    font-size: 15px;
+    line-height: 1.4;
+    color: variables.$text-02;
+    margin: 0;
+
+    @include mixins.line-clamp(4);
+
+    @media screen and (min-width: variables.$w992) {
+    font-size: 16px;
+    }
+  }
+
+
+}

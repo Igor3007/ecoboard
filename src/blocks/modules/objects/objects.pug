@@ -1,3 +1,11 @@
+mixin object-card(obj)
+  .objects__card
+    .objects__card__img
+      img(src=obj.img alt=obj.title loading="lazy")
+    .objects__card__content
+      h3.objects__card__title= obj.title
+      p.objects__card__text= obj.desc
+
 mixin objects
   .objects
     .container
@@ -7,12 +15,7 @@ mixin objects
 
       .objects__grid
         each obj, index in app.objects
-          .objects__card
-            .objects__card__img
-              img(src=obj.img alt=obj.title loading="lazy")
-            .objects__card__content
-              h3.objects__card__title= obj.title
-              p.objects__card__text= obj.desc
+          +object-card(obj)
 
 
       .objects__mobile-btn

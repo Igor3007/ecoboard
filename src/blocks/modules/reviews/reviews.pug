@@ -1,36 +1,50 @@
 mixin review-card(item)
 
-    .review-card
-      .review-card__header
-        .review-card__avatar(
-          style=`background-color: ${item.avatarBg || '#F5F5F5'}; color: ${item.avatarColor || '#555'};`
-        )
-          if item.avatarImg
-            img(src=item.avatarImg, alt=item.name)
-          else
-            span M
+  .review-card
+    .review-card__header
+      .review-card__avatar(
+        style=`background-color: ${item.avatarBg || '#F5F5F5'}; color: ${item.avatarColor || '#555'};`
+      )
+        if item.avatarImg
+          img(src=item.avatarImg, alt=item.name)
+        else
+          span M
 
-        .review-card__info
-          .review-card__name= item.name
+      .review-card__info
+        .review-card__name= item.name
 
-      .review-card__meta
-        .review-card__stars
-          - for (let i = 0; i < item.rating; i++)
-            svg(width="16" height="16" viewBox="0 0 24 24" fill="#FFD223")
-              path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
-        span.review-card__date= item.date
+    .review-card__meta
+      .review-card__stars
+        - for (let i = 0; i < item.rating; i++)
+          svg(width="16" height="16" viewBox="0 0 24 24" fill="#FFD223")
+            path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
+      span.review-card__date= item.date
 
-      .review-card__text
-        p= item.text
+    .review-card__text
+      p= item.text
 
-      if item.hasMore
-        button.review-card__more(type="button")
-          span Читать далее
-          svg(width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-            path(d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6")
-            polyline(points="15 3 21 3 21 9")
-            line(x1="10" y1="14" x2="21" y2="3")
+    if item.hasMore
+      button.review-card__more(type="button")
+        span Читать далее
+        svg(width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+          path(d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6")
+          polyline(points="15 3 21 3 21 9")
+          line(x1="10" y1="14" x2="21" y2="3")
 
+mixin yandex-box(data)
+  .yandex-reviews
+    .yandex-reviews__logo: +bgimage('/img/common/logo-yandex.svg')
+
+    p.yandex-reviews__text Больше отзывов довольных клиентов читайте на Яндекс Картах!
+
+    .yandex-reviews__rating-box
+      .yandex-reviews__rating-info
+        span.yandex-reviews__rating-label Средний рейтинг
+        .yandex-reviews__rating-value
+          svg(width="20" height="20" viewBox="0 0 24 24" fill="#FFD223")
+            path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
+          span= data.yandexRating
+      .yandex-reviews__btn: a(href=data.yandexLink target="_blank"): button.btn Читать все отзывы
 
 mixin reviews(data)
   section.reviews-section
@@ -56,17 +70,5 @@ mixin reviews(data)
                 li.splide__slide: +review-card(item)
 
         //- Блок Яндекс
-        .reviews-section__sidebar
-          .yandex-reviews
-            .yandex-reviews__logo: +bgimage('/img/common/logo-yandex.svg')
+        .reviews-section__sidebar: +yandex-box(data)
 
-            p.yandex-reviews__text Больше отзывов довольных клиентов читайте на Яндекс Картах!
-
-            .yandex-reviews__rating-box
-              .yandex-reviews__rating-info
-                span.yandex-reviews__rating-label Средний рейтинг
-                .yandex-reviews__rating-value
-                  svg(width="20" height="20" viewBox="0 0 24 24" fill="#FFD223")
-                    path(d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z")
-                  span= data.yandexRating
-              .yandex-reviews__btn: a(href=data.yandexLink target="_blank"): button.btn Читать все отзывы

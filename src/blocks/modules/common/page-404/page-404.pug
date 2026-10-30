@@ -1,11 +1,48 @@
-mixin page-404
-  section.section-page-404
+mixin page-404()
+  section.page-404
     .container
-      .page-404 
-        .page-404__image
-          picture
-            img(src="/img/common/404_illustration.svg")
-        .page-404__title Страница потерялась, но обещала вернуться
-        .page-404__desc А пока можете посмотреть другие, не менее важные:
-        .page-404__btn
-          a(href='#'): button.btn.btn-line На главную
+      .page-404__layout
+
+        //- Левая колонка с контентом
+        .page-404__content
+          .page-404__code Ошибка 404:
+          h1.page-404__title Страница не найдена
+
+          p.page-404__subtitle Ничего страшного, вы всегда можете:
+
+          .page-404__actions
+            a.btn.btn-accent(href="/") Вернуться на главную
+            a.btn.btn-white(href="/catalog") Перейти в каталог
+
+          .page-404__contacts
+            p.page-404__contacts-title Или свяжитесь с нами любым удобным способом:
+
+            .page-404__contact-list
+              .page-404__contact-item
+                span.page-404__contact-label Звоните по телефону
+                a.page-404__contact-value(href="tel:+79227013050") +7 (922) 701-30-50
+
+              .page-404__contact-item
+                span.page-404__contact-label E-mail
+                a.page-404__contact-value(href="mailto:info@ekoboard.ru") info@ekoboard.ru
+
+              .page-404__contact-item
+                span.page-404__contact-label Адрес
+                span.page-404__contact-value Челябинская область, Касли, Советская, 68/29
+
+            //- Соцсети (стили взяты из футера)
+            .page-404__social
+              ul
+                li: a(href="#"): +icons('#ic_tg')
+                li: a(href="#"): +icons('#ic_ph')
+                li: a(href="#"): +icons('#ic_vk')
+
+        //- Правая колонка с изображением
+        .page-404__media
+          //- Геометрическая фигура (можно заменить на img, если есть готовый SVG)
+          .page-404__shape
+            svg(width="520", height="520", viewBox="0 0 520 520", fill="none", xmlns="http://www.w3.org/2000/svg")
+              path(d="M470.07 520H49.9375V374.008L274.008 313.801L470.07 387.101V520Z", fill="#8F1117")
+              path(d="M470.07 289.468V357.625L274.008 281.449L49.9375 343.593V267.818L274.008 202.066L470.07 289.468Z", fill="#8F1117")
+              path(d="M470.07 121.989V255.389L274.008 172.398L49.9375 237.761V121.989L274.008 0L470.07 121.989Z", fill="#8F1117")
+

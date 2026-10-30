@@ -20,12 +20,13 @@
             gap: 16px;
 
             @media screen and (max-width: variables.$w1024) {
-                flex-direction: column !important ;
+                flex-direction: column !important;
             }
 
             @media screen and (min-width: variables.$w1024) {
                 flex-direction: row !important;
             }
+
             @media screen and (min-width: variables.$w760) {
                 align-items: stretch; // Растягиваем колонки по высоте
             }
@@ -70,6 +71,7 @@
             @media screen and (min-width: variables.$w1440) {
                 padding: 36px;
             }
+
             @media screen and (min-width: variables.$w1660) {
                 padding: 48px;
             }
@@ -90,6 +92,7 @@
             @media screen and (min-width: variables.$w1440) {
                 font-size: 40px;
             }
+
             @media screen and (min-width: variables.$w1660) {
                 font-size: 44px;
             }
@@ -178,6 +181,23 @@
         }
     }
 
+    &__size {
+
+        margin-bottom: 32px;
+
+        &-title {
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        & ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+    }
+
     &__price-wrap {
         flex-shrink: 0;
     }
@@ -243,14 +263,14 @@
         margin-bottom: 16px;
 
         @media screen and (max-width: variables.$w576) {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                scrollbar-width: none;
-                margin-right: -16px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scrollbar-width: none;
+            margin-right: -16px;
 
-                & > div {
-                    min-width: 60px;
-                }
+            &>div {
+                min-width: 60px;
+            }
         }
 
     }

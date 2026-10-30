@@ -1,0 +1,20 @@
+extends ../layouts/home
+
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/modules/common/page-404/page-404.pug
+
+
+
+
+block variables
+  include ../../data/data.pug
+  - const title = "Страница не найдена"
+
+block content
+
+  +page-404
+
+
+
+block scripts
+  script(src="/js/common.js")

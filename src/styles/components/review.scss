@@ -2,201 +2,201 @@
 @use "../helpers/mixins";
 
 .reviews-section {
-  padding: 40px 0;
+    padding: 40px 0;
 
-  @media screen and (min-width: variables.$w760) {
-    padding: 60px 0;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-
-    @media screen and (min-width: variables.$w1440) {
-        margin-right: 453px;
+    @media screen and (min-width: variables.$w760) {
+        padding: 60px 0;
     }
 
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+
+        @media screen and (min-width: variables.$w1440) {
+            margin-right: 453px;
+        }
 
 
-  }
 
-  &__title {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1.2;
-    color: variables.$text-01;
-    margin: 0;
-
-    @media screen and (min-width: variables.$w992) {
-      font-size: 36px;
-    }
-  }
-
-  &__nav {
-    display: flex;
-    gap: 8px;
-    background: variables.$bg-01;
-    padding: 4px;
-    border-radius: 4px;
-
-    // Скрываем на мобилке, если не нужны
-    @media screen and (max-width: variables.$w992) {
-      display: none;
-    }
-  }
-
-  &__nav-btn {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: variables.$text-01;
-    transition: opacity 0.3s;
-
-    &:hover {
-      opacity: 0.7;
     }
 
-    &:disabled {
-      opacity: 0.3;
-      cursor: default;
-    }
-  }
+    &__title {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 1.2;
+        color: variables.$text-01;
+        margin: 0;
 
-  &__layout {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    // Десктопная раскладка: сетка для слайдера + сайдбар
-    @media screen and (min-width: variables.$w992) {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 24px;
-    }
-  }
-
-  &__slider {
-    width: 100%;
-
-    @media screen and (min-width: variables.$w992) {
-      flex: 1; // Занимает оставшееся место
-      min-width: 0; // Важно для flex-контейнеров со слайдером
-    }
-  }
-
-  &__sidebar {
-    width: 100%;
-    align-self: normal;
-
-    @media screen and (min-width: variables.$w992) {
-      width: 429px; // Фиксированная ширина сайдбара
-      flex-shrink: 0;
+        @media screen and (min-width: variables.$w992) {
+            font-size: 36px;
+        }
     }
 
-    @media screen and (min-width: variables.$w1440) {
-        margin-top: -60px;
+    &__nav {
+        display: flex;
+        gap: 8px;
+        background: variables.$bg-01;
+        padding: 4px;
+        border-radius: 4px;
+
+        // Скрываем на мобилке, если не нужны
+        @media screen and (max-width: variables.$w992) {
+            display: none;
+        }
     }
-  }
 
-  & .splide {
-    &__pagination {
-        bottom: -17px;
+    &__nav-btn {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: variables.$text-01;
+        transition: opacity 0.3s;
 
-        &__page {
-            width: 8px;
-            height: 4px;
-            background-color: variables.$border-01;
-            border-radius: 10px;
-            opacity: 1;
-            transition: 0.3s ease;
+        &:hover {
+            opacity: 0.7;
+        }
 
-            &.is-active {
-                width: 24px;
-                background-color: variables.$accent-1-1;
-                transform: scale(1);
+        &:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+    }
+
+    &__layout {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        // Десктопная раскладка: сетка для слайдера + сайдбар
+        @media screen and (min-width: variables.$w992) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 24px;
+        }
+    }
+
+    &__slider {
+        width: 100%;
+
+        @media screen and (min-width: variables.$w992) {
+            flex: 1; // Занимает оставшееся место
+            min-width: 0; // Важно для flex-контейнеров со слайдером
+        }
+    }
+
+    &__sidebar {
+        width: 100%;
+        align-self: normal;
+
+        @media screen and (min-width: variables.$w992) {
+            width: 429px; // Фиксированная ширина сайдбара
+            flex-shrink: 0;
+        }
+
+        @media screen and (min-width: variables.$w1440) {
+            margin-top: -60px;
+        }
+    }
+
+    & .splide {
+        &__pagination {
+            bottom: -17px;
+
+            &__page {
+                width: 8px;
+                height: 4px;
+                background-color: variables.$border-01;
+                border-radius: 10px;
+                opacity: 1;
+                transition: 0.3s ease;
+
+                &.is-active {
+                    width: 24px;
+                    background-color: variables.$accent-1-1;
+                    transform: scale(1);
+                }
             }
         }
     }
 }
-}
 
 // Карточка отзыва
 .review-card {
-  background: #fff;
-  border: 1px solid variables.$border-01;
-  border-radius: 12px;
-  padding: 24px;
-  height: 100%; // Чтобы карточки были одной высоты в слайдере
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (min-width: variables.$w992) {
-    // На десктопе, если это не слайдер, а просто сетка
-    // height: auto;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
-  &__avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 18px;
-    flex-shrink: 0;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &__info {
+    background: #fff;
+    border: 1px solid variables.$border-01;
+    border-radius: 12px;
+    padding: 24px;
+    height: 100%; // Чтобы карточки были одной высоты в слайдере
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
 
-  &__name {
-    font-weight: 600;
-    font-size: 16px;
-    color: variables.$text-01;
-  }
+    @media screen and (min-width: variables.$w992) {
+        // На десктопе, если это не слайдер, а просто сетка
+        // height: auto;
+    }
 
-  &__meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
 
-  &__stars {
-    display: flex;
-    gap: 2px;
-  }
+    &__avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 18px;
+        flex-shrink: 0;
+        overflow: hidden;
 
-  &__date {
-    font-size: 14px;
-    color: variables.$gray-48;
-  }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 
-  &__text {
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__name {
+        font-weight: 600;
+        font-size: 16px;
+        color: variables.$text-01;
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__stars {
+        display: flex;
+        gap: 2px;
+    }
+
+    &__date {
+        font-size: 14px;
+        color: variables.$gray-48;
+    }
+
+    &__text {
         font-size: 16px;
         line-height: 140%;
         color: #000000;
@@ -204,129 +204,129 @@
         margin-bottom: 12px;
         margin-top: 12px;
 
-    // Ограничение строк, если нужно
-    p {
-      margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 4; // Ограничиваем 5 строками
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-  }
-
-  &__more {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 15px;
-    color: variables.$gray-48;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: color 0.3s;
-    margin-top: 5px;
-
-    @media screen and (min-width: variables.$w1440) {
-        font-size: 16px;
+        // Ограничение строк, если нужно
+        p {
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; // Ограничиваем 5 строками
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     }
 
-    &:hover {
-      color: variables.$main;
-    }
+    &__more {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 15px;
+        color: variables.$gray-48;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        align-self: flex-start;
+        transition: color 0.3s;
+        margin-top: 5px;
 
-    svg {
-      width: 20px;
-      height: 20px;
+        @media screen and (min-width: variables.$w1440) {
+            font-size: 16px;
+        }
+
+        &:hover {
+            color: variables.$main;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
     }
-  }
 }
 
 // Блок Яндекс
 .yandex-reviews {
-  background: variables.$bg-01;
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  height: 100%;
-
-  &__logo {
-    margin-bottom: 8px;
-
-    & .bgimage {
-        width: 126px;
-        height: 36px;
-        display: inline-block;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-  }
-
-  &__text {
-    font-size: 14px;
-    color: variables.$gray-48;
-    line-height: 1.4;
-    margin: 0;
-    margin-bottom: auto;
-  }
-
-  &__rating-box {
-    background: #fff;
-    border-radius: 8px;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-
-    @media screen and (min-width: variables.$w1440) {
-        margin-top: 54px;
-    }
-
-
-    @media screen and (max-width: variables.$w375) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-    }
-  }
-
-  &__rating-info {
+    background: variables.$bg-01;
+    border-radius: 12px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
+    gap: 16px;
+    height: 100%;
 
-  &__rating-label {
-    font-size: 12px;
-    color: variables.$gray-48;
-  }
+    &__logo {
+        margin-bottom: 8px;
 
-  &__rating-value {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 700;
-    font-size: 24px;
-    color: variables.$text-01;
-    min-width: 140px;
-  }
-
-  &__btn {
-
-    @media screen and (max-width: variables.$w576) {
-
-        width: 100%;
-
-      & .btn {
-        width: 100%;
-      }
+        & .bgimage {
+            width: 126px;
+            height: 36px;
+            display: inline-block;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
     }
-  }
+
+    &__text {
+        font-size: 14px;
+        color: variables.$gray-48;
+        line-height: 1.4;
+        margin: 0;
+        margin-bottom: auto;
+    }
+
+    &__rating-box {
+        background: #fff;
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        @media screen and (min-width: variables.$w1440) {
+            margin-top: 54px;
+        }
+
+
+        @media screen and (max-width: variables.$w375) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+    }
+
+    &__rating-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__rating-label {
+        font-size: 12px;
+        color: variables.$gray-48;
+    }
+
+    &__rating-value {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 700;
+        font-size: 24px;
+        color: variables.$text-01;
+        min-width: 140px;
+    }
+
+    &__btn {
+
+        @media screen and (max-width: variables.$w576) {
+
+            width: 100%;
+
+            & .btn {
+                width: 100%;
+            }
+        }
+    }
 
 
 }
@@ -335,7 +335,7 @@
     & .review-card {
         max-width: 700px;
 
-        &__text{
+        &__text {
             -webkit-line-clamp: unset;
 
             & p {
@@ -343,45 +343,96 @@
             }
         }
 
-        &__more{
-        display: none;
+        &__more {
+            display: none;
         }
     }
 }
 
 .section-page-reviews {
     padding-top: 40px;
+    overflow: visible;
 }
+
 .page-reviews {
-    &__list{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
 
 
     }
 
-    &__item{
+    &__item {
 
-    flex-grow: 1;
-    flex-basis: 260px;
+        flex-grow: 1;
+        flex-basis: 260px;
 
-    @media screen and (min-width: variables.$w1440) {
-        flex-basis: 465px;
+        @media screen and (min-width: variables.$w1440) {
+            flex-basis: 465px;
+        }
+
+        @media screen and (min-width: variables.$w992) {
+            flex-basis: 480px;
+        }
+
+        @media screen and (min-width: variables.$w576) {
+            flex-basis: 360px;
+        }
+
+        & .review-card {
+            height: 100%;
+        }
+
+
     }
 
-    @media screen and (min-width: variables.$w992) {
-        flex-basis: 480px;
+    &__ya {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: flex-end;
+
+        @media screen and (min-width: variables.$w1376) {
+            margin-top: -120px;
+        }
     }
 
-    @media screen and (min-width: variables.$w576) {
-        flex-basis: 360px;
+    .yandex-reviews {
+        width: 100%;
     }
 
-    & .review-card {
-        height: 100%;
+    @media screen and (min-width: variables.$w1376) {
+        .yandex-reviews {
+            width: 66.3%;
+        }
     }
 
 
+    @media screen and (min-width: variables.$w760) {
+        .yandex-reviews {
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            margin-left: auto;
+            display: inline-flex;
+            padding: 18px;
+
+
+            &__rating-box {
+                margin-top: 0;
+                flex-grow: 1;
+            }
+
+            &__text {
+                margin-top: auto;
+                max-width: 430px;
+            }
+
+            &__logo {
+                margin-bottom: 0;
+            }
+        }
     }
+
+
 }

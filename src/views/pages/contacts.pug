@@ -1,0 +1,29 @@
+extends ../layouts/home
+
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/modules/faq/faq.pug
+include ../../blocks/modules/contacts/contacts.pug
+
+
+
+block variables
+  include ../../data/data.pug
+  - const title = "Контакты"
+
+block content
+  section.section-page
+    .container
+      .page
+        .page__breadcrumbs
+          +breadcrumb([
+            'Главная',
+            'Контакты',
+          ])
+        .page__h1: h1 Контакты
+
+  +contacts-page
+
+
+
+block scripts
+  script(src="/js/common.js")

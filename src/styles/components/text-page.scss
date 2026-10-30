@@ -1,0 +1,267 @@
+@use "../helpers/variables";
+@use "../base/general";
+
+.text-page {
+    padding: 40px 0;
+    overflow: visible;
+
+    @media screen and (min-width: variables.$w992) {
+        padding: 60px 0;
+    }
+
+    &__breadcrumbs {
+        display: flex;
+        gap: 8px;
+        font-size: 13px;
+        color: variables.$gray-48;
+        margin-bottom: 24px;
+
+        a {
+            color: variables.$gray-48;
+            transition: color 0.3s;
+
+            &:hover {
+                color: variables.$main;
+            }
+        }
+
+        span {
+            color: variables.$border-01;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.2;
+        color: variables.$text-01;
+        margin: 0 0 32px 0;
+
+        @media screen and (min-width: variables.$w992) {
+            font-size: 48px;
+            margin-bottom: 48px;
+        }
+    }
+
+    &__layout {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        @media screen and (min-width: variables.$w576) {
+            gap: 32px;
+        }
+
+        @media screen and (min-width: variables.$w992) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 60px;
+        }
+    }
+
+    // --- Сайдбар (Содержание) ---
+    &__sidebar {
+        @media screen and (min-width: variables.$w992) {
+            width: 300px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px; // Отступ от верха при скролле
+        }
+    }
+
+    &__toc {
+
+        border-radius: 8px;
+        overflow: hidden;
+
+        // На десктопе всегда открыт
+        @media screen and (min-width: variables.$w992) {
+            &[open] {
+                // Ничего не делаем, просто стилизуем
+            }
+        }
+
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            font-weight: 600;
+            font-size: 16px;
+            color: variables.$text-01;
+            cursor: pointer;
+            list-style: none;
+            background-color: variables.$bg-01;
+            margin-bottom: 10px;
+            border-radius: 6px;
+
+            @media screen and (min-width: variables.$w992) {
+                background: transparent;
+                margin-bottom: 0;
+            }
+
+
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            @media screen and (min-width: variables.$w992) {
+                cursor: default;
+            }
+        }
+
+        &-arrow {
+            display: flex;
+            transition: transform 0.3s ease;
+
+            @media screen and (min-width: variables.$w992) {
+                display: none; // Скрываем стрелку на десктопе
+            }
+        }
+
+        // Поворот стрелки при открытии
+        &[open] &-arrow {
+            transform: rotate(180deg);
+        }
+
+        &-nav {
+
+
+            @media screen and (min-width: variables.$w992) {
+                padding-top: 0;
+            }
+        }
+
+        &-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            // Скрываем список на мобилке, если details закрыт
+            @media screen and (max-width: variables.$w992) {
+                .text-page__toc:not([open]) & {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    // Ссылки в содержании
+    &__toc-link {
+        display: block;
+        padding: 12px 12px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: variables.$text-02;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        border-radius: 6px;
+        background-color: variables.$bg-01;
+
+        @media screen and (min-width: variables.$w992) {
+            font-size: 16px;
+        }
+
+        &:hover {
+            color: variables.$main;
+            background: rgba(variables.$main, 0.05);
+        }
+
+        // Активный пункт (добавляется через JS)
+        &.is-active {
+            color: variables.$main;
+            background: rgba(variables.$main, 0.08);
+            font-weight: 600;
+        }
+    }
+
+    // --- Основной контент ---
+    &__content {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+// ==========================================
+// Дополнения для .formated-text (Политика)
+// ==========================================
+
+.formated-text {
+    h2 {
+        // Отступ для скролла, чтобы заголовок не прятался под липким меню
+        scroll-margin-top: 100px;
+        margin-top: 40px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    // Нумерованные списки (как в политике)
+    & ol.numbered-list {
+        list-style: none;
+        counter-reset: item;
+        padding: 0;
+        margin: 20px 0;
+
+        &>li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: variables.$text-02;
+
+            &::before {
+                counter-increment: item;
+                content: counter(item) ".";
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-weight: 600;
+                color: variables.$text-02;
+            }
+        }
+    }
+
+    // Списки с красными галочками (как в п. 4.1)
+    & ul.check-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        &>li {
+            position: relative;
+            padding-left: 32px;
+
+            line-height: 1.6;
+            color: variables.$text-01;
+
+            @media screen and (min-width: variables.$w992) {
+                font-size: 16px;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 3px;
+                width: 18px;
+                height: 18px;
+                background-color: variables.$main;
+                border-radius: 50%;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+                background-size: 12px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}

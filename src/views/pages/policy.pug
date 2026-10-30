@@ -1,0 +1,28 @@
+extends ../layouts/home
+
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+include ../../blocks/modules/text-page/text-page.pug
+
+
+
+
+block variables
+  include ../../data/data.pug
+  - const title = "Политика конфидеециальности"
+
+block content
+  section.section-page
+    .container
+      .page
+        .page__breadcrumbs
+          +breadcrumb([
+            'Главная',
+            'Политика конфидеециальности',
+          ])
+        .page__h1: h1 Политика конфидеециальности
+  +text-page
+
+
+
+block scripts
+  script(src="/js/common.js")

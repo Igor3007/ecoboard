@@ -10,31 +10,31 @@ include ../../blocks/modules/faq/faq.pug
 
 block variables
   include ../../data/data.pug
-  - const title = "Продукция - Все объекты"
+  - const title = "Все объекты"
 
 block content
-    section.section-page
-        .container
-            .page
-                .page__breadcrumbs
-                    +breadcrumb([
-                        'Главная',
-                        'Объекты с нашим фибросайдингом',
-                    ])
-                .page__h1: h1 Объекты с нашим фибросайдингом
+  section.section-page
+    .container
+      .page
+        .page__breadcrumbs
+          +breadcrumb([
+            'Главная',
+            'Объекты с нашим фибросайдингом',
+          ])
+        .page__h1: h1 Объекты с нашим фибросайдингом
 
-    section.section-page-objects
-        .container
-            .page-objects
-                .page-objects__list
-                    each item in app.objects
-                        .page-objects__item: +object-card(item)
-
-
+  section.section-page-objects
+    .container
+      .page-objects
+        .page-objects__list
+          each item in app.objects
+            .page-objects__item: +object-card(item)
 
 
-    +reviews(app.reviewsData)
-    +faq(app.faqData)
+
+
+  +reviews(app.reviewsData)
+  +faq(app.faqData)
 
 
 block scripts

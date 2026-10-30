@@ -16,13 +16,13 @@ mixin tab-specs(title, tableData)
     h2= title
     .table.table-char
       table
+        tr
+          th= tableData.header.col1
+          th= tableData.header.col2
+        each row in tableData.rows
           tr
-            th= tableData.header.col1
-            th= tableData.header.col2
-          each row in tableData.rows
-            tr
-              td= row.col1
-              td= row.col2
+            td= row.col1
+            td= row.col2
 
 //- 3. Сертификаты
 mixin tab-certificates(title, certificates)

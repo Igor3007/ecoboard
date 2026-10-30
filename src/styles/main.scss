@@ -9,6 +9,8 @@
 @use "ui/buttons";
 @use "ui/fotmated-text.scss";
 @use "ui/fslightbox-theme.scss";
+@use "ui/checkbox.scss";
+@use "ui/form.scss";
 
 @use "common/header";
 @use "common/footer";
@@ -28,3 +30,6 @@
 @use "components/company-info.scss";
 @use "components/advantages.scss";
 @use "components/history-timeline.scss";
+@use "components/text-page.scss";
+@use "components/page-404.scss";
+@use "components/contacts.scss";

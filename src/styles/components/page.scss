@@ -1,7 +1,11 @@
 @use "../base/general";
 
 .section-page {
-	padding-top: 18px;
+	padding-top: 6px;
+
+    @media screen and (min-width: 480px) {
+        padding-top: 18px;
+    }
 }
 
 .page {

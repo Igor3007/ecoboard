@@ -1,0 +1,68 @@
+mixin contacts-page()
+  section.contacts-page
+    .container
+
+      //- ================= ВЕРХНИЙ БЛОК С КОНТАКТАМИ =================
+      .contacts-info
+        .contacts-info__item.contacts-info__item--social
+          .contacts-info__wrp
+            span.contacts-info__label Звоните по телефону
+            a.contacts-info__value(href="tel:+79227013050") +7 (922) 701-30-50
+
+          .contacts-info__social
+            ul
+              li: a(href="#"): +icons('#ic_tg')
+              li: a(href="#"): +icons('#ic_ph')
+              li: a(href="#"): +icons('#ic_vk')
+
+        .contacts-info__item
+          span.contacts-info__label E-mail
+          a.contacts-info__value(href="mailto:info@ekoboard.ru") info@ekoboard.ru
+
+        .contacts-info__item.contacts-info__item--address
+          span.contacts-info__label Адрес производства:
+          span.contacts-info__value Челябинская область, Касли, Советская, 68/29
+
+      //- ================= КАРТА =================
+      .contacts-map
+        #map.contacts-map__container
+
+      //- ================= ФОРМА =================
+      .contacts-form
+        h2.contacts-form__title Напишите нам
+        p.contacts-form__desc Наши специалисты оперативно проконсультируют вас и подготовят предварительный расчёт стоимости продукции и работ.
+
+        form.contacts-form__form(action="#" method="POST")
+          .form
+            //- Верхний ряд (3 колонки)
+            .form__row
+              .form__item
+                .form__subitem
+                  label.form__label Ваше имя *
+                  input(type="text" placeholder="Введите имя" required)
+              .form__item
+                .form__subitem
+                  label.form__label Контактный телефон *
+                  input(type="tel" placeholder="Введите телефон" required data-maska="+# (###) ###-##-##")
+              .form__item
+                .form__subitem
+                  label.form__label Организация (необязательно)
+                  input(type="text" placeholder="Введите организацию")
+
+            //- Нижний ряд (1 колонка)
+            .form__item
+              .form__subitem
+                label.form__label Комментарий (необязательно)
+                textarea(placeholder="Текст комментария")
+
+            //- Кнопка и чекбокс
+            .form__item
+              .form__subitem.form__bottom
+                button.btn.btn-accent(type="submit") Отправить
+
+                label.checkbox.contacts-form__checkbox
+                  input(type="checkbox" required checked)
+                  span.checkbox__elem
+                  span.checkbox__text
+                    | Нажимая кнопку «Отправить», я соглашаюсь с
+                    a(href="/policy.html") политикой конфиденциальности и обработки персональных данных

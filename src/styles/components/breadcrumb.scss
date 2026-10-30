@@ -4,7 +4,7 @@
 .breadcrumb {
 
     background-color: transparent;
-    padding: 0 0 4px 0;
+    padding: 0 0 15px 0;
 
     @media screen and (min-width: variables.$w760) {
         padding: 0 0 17px 0;
@@ -73,6 +73,9 @@
 
         & a,
         & span {
+
+            font-size: 14px;
+
             @media screen and (min-width: variables.$w760) {
                 font-size: 18px;
              }

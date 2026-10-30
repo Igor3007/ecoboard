@@ -31,13 +31,19 @@ mixin product-detail(data)
             .product-card__desc= data.shortDesc
 
             //- Кнопка "Подробнее о товаре"
-            details.product-detail__more
-              summary.product-detail__more-btn
+            .product-detail__more
+              a.product-detail__more-btn(href="#section-description")
                 span Подробнее о товаре
                 svg(width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg")
                   path(d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
-              .product-detail__more-text
-                p= data.fullDesc
+
+
+            .product-detail__size
+              h3.product-detail__size-title Выберите размер:
+              ul
+                li: +radio('200*3000*10 мм', 'size')
+                li: +radio('200*3000*12 мм', 'size')
+
 
             //- Блок с ценой и кнопками
             .product-detail__price-box
@@ -82,9 +88,9 @@ mixin product-detail(data)
                     if feature.value
                       b= feature.value
 
-                .product-detail__features-more-btn
-                    span Все особенности
-                    svg(width="10" height="6" viewBox="0 0 10 6" fill="none")
-                      path(d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
+                a.product-detail__features-more-btn(href="#section-specs")
+                  span Все особенности
+                  svg(width="10" height="6" viewBox="0 0 10 6" fill="none")
+                    path(d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
 
 

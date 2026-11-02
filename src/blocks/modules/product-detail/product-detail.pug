@@ -51,14 +51,12 @@ mixin product-detail(data)
                 .product-detail__price-value от #{data.price} ₽ / м²
                 .product-detail__price-note Точную цену уточняйте у менеджера
               .product-detail__actions
-                a(href="#")
-                  button.btn.btn-red
+                  button.btn.btn-red(data-popup="ajax" data-id="122" data-src="popup_order-product")
                     +icons('#ic_order')
                     span Заказать сайдинг
 
 
-                a(href="#")
-                  button.btn.btn-gray
+                  button.btn.btn-gray(data-popup="ajax" data-src="popup_consult")
                     +icons('#ic_callback')
                     span Получить консультацию
 

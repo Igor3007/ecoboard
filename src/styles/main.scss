@@ -6,6 +6,7 @@
 @use "helpers/animate";
 @use "base/common";
 
+@use "ui/af-lightbox.scss";
 @use "ui/buttons";
 @use "ui/fotmated-text.scss";
 @use "ui/fslightbox-theme.scss";
@@ -15,6 +16,7 @@
 @use "common/header";
 @use "common/footer";
 
+@use "components/popup-callback.scss";
 @use "components/product-cart.scss";
 @use "components/about-us.scss";
 @use "components/objects.scss";
@@ -33,3 +35,6 @@
 @use "components/text-page.scss";
 @use "components/page-404.scss";
 @use "components/contacts.scss";
+@use "components/product-minicard.scss";
+@use "components/float-menu.scss";
+@use "components/main-menu.scss";

@@ -19,6 +19,23 @@
         padding: 12px;
         border-radius: 12px;
 
+        @keyframes bread-flutter {
+            0% {
+              background-position: 16% 100%;
+            }
+            50% {
+              background-position: 16% 105%;
+            }
+            100% {
+              background-position: 16% 100%;
+            }
+          }
+
+          .bread {
+
+
+          }
+
         @media screen and (min-width: variables.$w992) {
             flex-direction: row;
             align-items: center;
@@ -27,6 +44,7 @@
             background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDg4IiBoZWlnaHQ9IjMyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBvcGFjaXR5PSIuMSIgZmlsbD0iI0UwMUIyNSI+PHBhdGggZD0iTTQ4OCA2MDRIMFY0MzQuNDI1bDI2MC4yNjctNjkuOTMzTDQ4OCA0NDkuNjMzVjYwNHoiLz48cGF0aCBkPSJNNDg4IDMzNi4yMjh2NzkuMTY4bC0yMjcuNzMzLTg4LjQ4MkwwIDM5OS4wOTZ2LTg4LjAxNWwyNjAuMjY3LTc2LjM3M0w0ODggMzM2LjIyOHoiLz48cGF0aCBkPSJNNDg4IDE0MS42OTR2MTU0Ljk1MWwtMjI3LjczMy05Ni4zOThMMCAyNzYuMTY5VjE0MS42OTRMMjYwLjI2NyAwIDQ4OCAxNDEuNjk0eiIvPjwvZz48L3N2Zz4=);
             background-repeat: no-repeat;
             background-position: 16% bottom;
+            animation: bread-flutter 2s ease-in-out infinite;
         }
         @media screen and (min-width: variables.$w1440) {
             gap: 60px;
@@ -96,6 +114,7 @@
         display: flex;
         justify-content: center;
         gap: 12px;
+        flex-wrap: wrap;
 
         @media screen and (max-width: variables.$w992) {
             margin-top: 24px;

@@ -11,7 +11,7 @@ mixin objects
     .container
       .objects__header
         h2.objects__title Объекты с нашей продукцией
-        a.objects__all-btn(href="#"): button.btn.btn-gray Смотреть все объекты
+        a.objects__all-btn(href="/objects.html"): button.btn.btn-gray Смотреть все объекты
 
       .objects__grid
         each obj, index in app.objects
@@ -19,4 +19,4 @@ mixin objects
 
 
       .objects__mobile-btn
-        button.btn.btn-gray(type="button") Смотреть все объекты
+        a(href="/objects.html"): button.btn.btn-gray(type="button") Смотреть все объекты

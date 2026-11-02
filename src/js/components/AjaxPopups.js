@@ -1,7 +1,7 @@
-import { afLightbox } from "../components/af-lightbox.js";
+import { afLightbox } from "./AfLightbox.js";
 import { config } from "../config.js";
 
-import { onLoadContacts } from "./popupHelpers.js";
+import { onLoadCallback } from "./popupHelpers.js";
 
 /**
  * Инициализация попапов, загружаемых через AJAX
@@ -27,10 +27,6 @@ export function initAjaxPopups() {
             const ajax_url = config.AJAX_POPUP_PATH.replace("{src}", item.dataset.src);
             const url = new URL(window.location.origin + ajax_url);
 
-            if (!url.pathname.endsWith("/")) {
-                url.pathname += "/";
-            }
-
             for (let key in item.dataset) {
                 if (!exceptions.includes(key)) {
                     url.searchParams.append(key, item.dataset[key]);
@@ -49,8 +45,12 @@ export function initAjaxPopups() {
                         popup.changeContent(data);
 
                         switch (item.dataset.src) {
-                            case "popup-contacts":
-                                onLoadContacts(popup);
+                            case "popup_callback":
+                            case "popup_question":
+                            case "popup_order":
+                            case "popup_consult":
+                            case "popup_order-product":
+                                onLoadCallback(popup);
                                 break;
 
                         }

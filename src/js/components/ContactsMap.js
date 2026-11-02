@@ -3,6 +3,10 @@ export default class ContactsMap {
         this.mapId = mapId;
         this.coords = coords; // [широта, долгота]
 
+        if(!document.querySelector(this.mapId)) {
+            return false
+        }
+
         // Ждем загрузки API
         if (typeof ymaps === 'undefined') {
             console.warn('Яндекс.Карты не загружены');

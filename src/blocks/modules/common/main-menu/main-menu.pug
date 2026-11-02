@@ -1,52 +1,44 @@
-mixin item-contact(data)
-  .item-contact
-    .item-contact__icon: +bgimage(data.icon)
-    .item-contact__main
-      .item-contact__label= data.label
-      .item-contact__link: a(href=data.link)= data.text
+mixin mobile-menu(menuData)
+  .mobile-menu
+    //- Шапка меню
+    .mobile-menu__header
+      span.mobile-menu__title Меню
+      button.mobile-menu__close(type="button" aria-label="Закрыть меню")
+        +icons('#ic_close', 20)
 
-mixin main-menu(data)
-  .main-menu(data-menu="container")
-    .main-menu__wrp
-      //- .main-menu__close(data-menu="close"): +icons('#ic_cross', 35)
-      .main-menu__nav
-        nav
-          ul
-            each item in app.mainMenu
-
-              li(class=""+(item.sub ? 'isset-sub':'')+"")
-                if item.icon
-                  a(href=item.href)
-                    +icons(item.icon)
+    //- Навигация
+    .mobile-menu__content
+      nav.mobile-menu__nav
+        ul.mobile-menu__list
+          each item in menuData
+            if item.sub
+              //- Если есть подменю, используем details/summary для аккордеона
+              li.mobile-menu__item.mobile-menu__item--has-sub
+                details.mobile-menu__details
+                  summary.mobile-menu__summary
                     span= item.text
-                else
-                  a(href=item.href)= item.text
-
-                if(item.sub)
-                  ul.sub-menu
+                    span.mobile-menu__arrow
+                      +icons('#ic_arrow-down', 12) //- Или другой класс для стрелки
+                  ul.mobile-menu__sub-list
                     each sub in item.sub
-                      li(class=""+(item.multi ? 'isset-sub':'')+"")
-                        a(href='#')= sub
-                        if(item.multi)
-                          ul.sub-menu
-                            each multi in item.multi
-                              li: a(href="#")= multi
-      .main-menu__contact
-        +item-contact({
-          icon: '/img/svg/ic_phone.svg', 
-          label: 'Phone:', 
-          link: 'tel:6474280007', 
-          text: '(647) 428-0007'
-        })
-        +item-contact({
-          icon: '/img/svg/ic_mail.svg', 
-          label: 'Email:', 
-          link: 'mailto:info@csgrenovation.ca', 
-          text: 'info@csgrenovation.ca'
-        }) 
-      .main-menu__social
-        ul.social-link
-          li.social-link__inst: a(href='#'): +bgimage('/img/svg/ic_ig.svg')
-          li.social-link__fb: a(href='#'): +bgimage('/img/svg/ic_fb.svg')
-          li.social-link__google: a(href='#'): +bgimage('/img/svg/ic_google.svg')
-       
+                      li.mobile-menu__sub-item
+                        a(href=sub.href)= sub.text
+            else
+              //- Обычный пункт меню
+              li.mobile-menu__item
+                a.mobile-menu__link(href=item.href)= item.text
+
+    //- Нижняя часть: Контакты и кнопки
+    .mobile-menu__footer
+      a.mobile-menu__phone(href="tel:+79227013050") +7 (922) 701-30-50
+
+      button.mobile-menu__callback(type="button" data-popup="ajax" data-src="popup_callback")
+        +icons('#ic_callback', 18)
+        span Заказать звонок
+
+      //- Соцсети (можно вынести в отдельный миксин, если нужно)
+      .mobile-menu__social
+        ul
+          li: a(href="#"): +icons('#ic_tg')
+          li: a(href="#"): +icons('#ic_ph')
+          li: a(href="#"): +icons('#ic_vk')

@@ -1,4 +1,5 @@
 include parts
+include ../../float-menu/float-menu.pug
 
 .header
     .container
@@ -7,11 +8,14 @@ include parts
                 a(href='/'): span.bgimage(style="background-image: url('/img/common/logo-color.png')")
 
             .header-top__catalog
-                a(href="/products.html")
-                    button.btn.btn-red
+                a.is-desctop(href="/products.html")
+                    button.btn.btn-red(data-float-menu="open")
                         +icons('#ic_cat')
-                        span.is-desctop Продукция
-                        span.is-mobile Меню
+                        span Продукция
+                div.is-mobile
+                    button.btn.btn-red(data-mobile-menu="open")
+                        +icons('#ic_cat')
+                        span Меню
 
             .header-top__nav
                 nav
@@ -32,9 +36,9 @@ include parts
 
                 .header-top__action
                     a(href='#')
-                        button.btn.btn-gray
+                        button.btn.btn-gray(data-popup='ajax' data-src="popup_callback")
                             +icons('#ic_callback')
                             span Заказать звонок
 
-
+            +float-menu(app.floatMenu)
 

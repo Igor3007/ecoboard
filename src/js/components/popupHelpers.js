@@ -1,3 +1,5 @@
-export function onLoadContacts(popup) {
-    alert('on load contacts')
+import { initYandexSmartCaptcha } from "./YSmartCaptcha";
+
+export function onLoadCallback(popup) {
+    initYandexSmartCaptcha()
 }

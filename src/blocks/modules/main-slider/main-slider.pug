@@ -17,7 +17,7 @@ mixin main-slider(data)
                 .interactive-slider__link
                     ul
                         li: a(href='#'): button.btn.btn-red Узнать подробнее
-                        li: a(href='#'): button.btn.btn-line Оставить заявку
+                        li: a(href='#'): button.btn.btn-line(data-popup='ajax' data-src="popup_order") Оставить заявку
 
           //- Кнопки навигации (статичные)
           .interactive-slider__nav

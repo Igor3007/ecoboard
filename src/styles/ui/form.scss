@@ -22,6 +22,10 @@ input {
 
 .form {
 
+    & .red-star {
+        color: variables.$accent-1-1;
+    }
+
     &.is-validate {
         & input:invalid {
             border: 1px solid variables.$red;
@@ -50,7 +54,7 @@ input {
         padding-bottom: 10px;
         border: 1px solid variables.$gray-92;
         box-sizing: border-box;
-        border-radius: 8px;
+        border-radius: 6px;
         width: auto;
         flex-grow: 1;
         background-color: #fff;
@@ -122,16 +126,18 @@ input {
     }
 
     & textarea {
-        min-height: 129px;
+        min-height: 100px;
         max-width: 100%;
         resize: vertical;
         width: 100%;
         border: 1px solid variables.$gray-92;
-        border-radius: 5px;
-        font-size: 14px;
+        border-radius: 6px;
+        font-size: 16px;
         padding: functions.rem(15);
         line-height: 140%;
         outline: none !important;
+
+
 
         &:focus {
             border-color: variables.$gray-56;

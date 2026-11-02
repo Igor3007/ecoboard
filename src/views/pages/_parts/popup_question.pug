@@ -1,0 +1,47 @@
+include ../../helpers/mixins.pug
+
+.modal-window
+  .modal-window__header
+    .modal-window__title-wrap
+      h2.modal-window__title Задать вопрос
+      p.modal-window__desc Свяжемся с Вами, как только ознакомимся с информацией!
+    button.modal-window__close(type="button" aria-label="Закрыть" data-af-popup="close")
+      +icons('#ic_close', 20)
+
+  .modal-window__body
+    form.modal-window__form.form(action="#" method="POST")
+
+
+
+      //- Поле 1
+      .form__item
+        .form__subitem
+          label.form__label Контактный телефон <span class="red-star">*</span>
+          input.form__input(type="tel" placeholder="Введите телефон" required data-maska="+# (###) ###-##-##")
+
+      //- Поле 2
+      .form__item
+        .form__subitem
+          label.form__label Ваше имя (необязательно)
+          input.form__input(type="text" placeholder="Введите имя")
+
+      //- Поле 3
+      .form__item
+        .form__subitem
+          label.form__label Ваш вопрос <span class="red-star">*</span>
+          textarea(name="quest" required placeholder="Текст вопроса")
+
+      //- Чекбокс согласия
+      .modal-window__agreement
+        label.checkbox
+          input(type="checkbox" required checked)
+          span.checkbox__elem
+          span.checkbox__text
+            | Нажимая кнопку «Отправить», я соглашаюсь с
+            a(href="/policy.html" target="_blank") политикой конфиденциальности и обработки персональных данных
+
+      //- Капча (SmartCaptcha)
+      .modal-window__captcha(id="captcha-container")
+
+      //- Кнопка отправки
+      button.btn.btn-accent.modal-window__submit(type="submit") Отправить

@@ -1,0 +1,17 @@
+mixin product-minicard(item)
+  a(href="/products-details.html").product-mini-card
+    .product-mini-card__image
+      if item.image
+        img(src=item.image, alt=item.title)
+
+    .product-mini-card__content
+      h3.product-mini-card__title= item.title
+      p.product-mini-card__desc= item.description
+
+      if item.size
+        .product-mini-card__meta
+          span.product-mini-card__meta-label Размер:
+          span.product-mini-card__meta-value= item.size
+
+      if item.price
+        .product-mini-card__price= item.price

@@ -48,17 +48,15 @@
             }
         }
 
-        & span {
-            &.is-mobile {
-                @media screen and (min-width: var.$w1376) {
-                    display: none;
-                }
+        & .is-mobile {
+            @media screen and (min-width: var.$w1376) {
+                display: none;
             }
+        }
 
-            &.is-desctop {
-                @media screen and (max-width: var.$w1376) {
-                    display: none;
-                }
+        & .is-desctop {
+            @media screen and (max-width: var.$w1376) {
+                display: none;
             }
         }
     }

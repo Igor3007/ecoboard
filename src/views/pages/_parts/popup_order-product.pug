@@ -1,0 +1,57 @@
+include ../../helpers/mixins.pug
+include ../../../blocks/modules/product-minicard/product-minicard.pug
+
+-
+  const miniCardData = {
+    image: "/img/product/br/img-small.jpg",
+    title: "ЭкоБоард Классик",
+    description: "Классический фиброцементный сайдинг для горизонтальной обшивки внахлёст ёлочкой. В том числе данный профиль может применяться для обустройства углов дом...",
+    size: "200*3000*10 мм",
+    price: "от 6 400 ₽ / м²"
+  };
+
+.modal-window
+  .modal-window__header
+    .modal-window__title-wrap
+      h2.modal-window__title Задать вопрос
+      p.modal-window__desc Свяжемся с Вами, как только ознакомимся с информацией!
+    button.modal-window__close(type="button" aria-label="Закрыть" data-af-popup="close")
+      +icons('#ic_close', 20)
+
+
+  .modal-window__body
+    .modal-window__product: +product-minicard(miniCardData)
+
+    form.modal-window__form.form(action="#" method="POST")
+      //- Поле 1
+      .form__item
+        .form__subitem
+          label.form__label Контактный телефон <span class="red-star">*</span>
+          input.form__input(type="tel" placeholder="Введите телефон" required data-maska="+# (###) ###-##-##")
+
+      //- Поле 2
+      .form__item
+        .form__subitem
+          label.form__label Ваше имя (необязательно)
+          input.form__input(type="text" placeholder="Введите имя")
+
+      //- Поле 3
+      .form__item
+        .form__subitem
+          label.form__label Организация (необязательно)
+          input.form__input(type="text" placeholder="Введите имя")
+
+      //- Чекбокс согласия
+      .modal-window__agreement
+        label.checkbox
+          input(type="checkbox" required checked)
+          span.checkbox__elem
+          span.checkbox__text
+            | Нажимая кнопку «Отправить», я соглашаюсь с
+            a(href="/policy.html" target="_blank") политикой конфиденциальности и обработки персональных данных
+
+      //- Капча (SmartCaptcha)
+      .modal-window__captcha(id="captcha-container")
+
+      //- Кнопка отправки
+      button.btn.btn-accent.modal-window__submit(type="submit") Отправить

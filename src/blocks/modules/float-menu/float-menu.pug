@@ -1,0 +1,10 @@
+include ../product-minicard/product-minicard.pug
+
+mixin float-menu(data)
+    .float-menu
+        .float-menu__wrp
+            .float-menu__list
+                each item in data
+                    .float-menu__item: +product-minicard(item)
+            .float-menu__all
+                a(href='/products.html'): button.btn.btn-gray Смотреть всю продукцию

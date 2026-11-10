@@ -1,6 +1,6 @@
 //- Миксин для одной карточки товара
 mixin accessory-card(item)
-  .accessory-card
+  .accessory-card(data-cid=item.id)
     //- Левая часть: Изображение и Заголовок
     .accessory-card__main
       .accessory-card__image
@@ -26,15 +26,13 @@ mixin accessory-card(item)
 
       .accessory-card__buttons
         //- Конструкция кнопок из вашего примера
-        a(href="#")
-          button.btn.btn-red
-            +icons('#ic_order')
-            span Заказать
+        button.btn.btn-red(data-popup='ajax' data-src="popup_order")
+          +icons('#ic_order')
+          span Заказать
 
-        a(href="#")
-          button.btn.btn-gray
-            +icons('#ic_callback')
-            span Получить консультацию
+        button.btn.btn-gray(data-popup='ajax' data-src="popup_consult")
+          +icons('#ic_callback')
+          span Получить консультацию
 
 
 mixin products-componets(data)

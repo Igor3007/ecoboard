@@ -39,4 +39,11 @@ mixin product-card(data)
                 button.btn.btn-white(href="#" data-popup='ajax' data-src="popup_order") Оставить заявку
 
           // Right Column: Image
-          .product-card__media: +bgimage(data.img)
+          .product-card__media
+            if(data.imagesArray)
+              ul.product-card__grid
+                each item in data.imagesArray
+                  li: a(href="/products-components.html#c"+item.id): +bgimage(item.image)
+            else
+              .product-card__imagebg
+                +bgimage(data.img)

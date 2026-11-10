@@ -86,6 +86,10 @@
             margin-top: 0;
 
             @media screen and (min-width: variables.$w992) {
+                font-size: 32px;
+            }
+
+            @media screen and (min-width: variables.$w1200) {
                 font-size: 36px;
             }
 

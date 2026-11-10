@@ -1,5 +1,5 @@
 import Splide from "@splidejs/splide";
-import fslightbox from "fslightbox";
+import ReviewPopup from "./ReviewPopups";
 
 export default class ReviewsSlider {
     constructor() {
@@ -7,8 +7,10 @@ export default class ReviewsSlider {
         this.slider = null;
         this.prevBtn = null;
         this.nextBtn = null;
-        this.init()
-        this.addEvents()
+        this.popup = null;
+
+        this.init();
+        this.addEvents();
     }
 
     init() {
@@ -19,16 +21,15 @@ export default class ReviewsSlider {
             perPage: 1,
             perMove: 1,
             gap: '16px',
-            pagination: true, // Точки на мобилке
-            arrows: false,    // Стрелки скрыты (используем свои кнопки на десктопе)
+            pagination: true,
+            arrows: false,
             mediaQuery: 'min',
             breakpoints: {
-                // Настройки для десктопа
                 992: {
                     perPage: 3,
                     pagination: false,
-                    arrows: false, // Можно включить true, если не используем кастомные кнопки
-                    drag: 'free', // Или false, если хотим жесткую сетку
+                    arrows: false,
+                    drag: 'free',
                 },
             },
         }).mount();
@@ -37,7 +38,6 @@ export default class ReviewsSlider {
     }
 
     bindNav() {
-        // Ищем кнопки внутри блока навигации, а не по всему документу
         const nav = this.el.closest('.reviews-section')?.querySelector('.reviews-section__nav')
             || document.querySelector('.reviews-section__nav');
 
@@ -53,6 +53,15 @@ export default class ReviewsSlider {
         this.nextBtn?.addEventListener('click', this.onNext);
     }
 
+    addEvents() {
+        // Попап работает только внутри нашего слайдера
+        // this.popup = new ReviewPopup({
+        //     triggerSelector: '.review-card__more',
+        //     cardSelector: '.review-card',
+        //     root: this.el,
+        // });
+    }
+
     destroy() {
         if (this.prevBtn && this.onPrev) {
             this.prevBtn.removeEventListener('click', this.onPrev);
@@ -65,22 +74,12 @@ export default class ReviewsSlider {
         this.onPrev = null;
         this.onNext = null;
 
+        this.popup?.destroy();
+        this.popup = null;
+
         if (this.slider) {
             this.slider.destroy();
             this.slider = null;
         }
-    }
-
-    openPopupReview(e) {
-        e.stopPropagation()
-        const instance = new FsLightbox();
-        instance.props.sources = [e.target.closest('.review-card').cloneNode(true)];
-        instance.open();
-    }
-
-    addEvents() {
-        this.el.querySelectorAll('.review-card__more').forEach(item => {
-            item.addEventListener('click', (e) => this.openPopupReview(e))
-        })
     }
 }

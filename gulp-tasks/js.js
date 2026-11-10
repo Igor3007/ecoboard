@@ -20,11 +20,6 @@ const pages = [
         name: 'common',
         src: './src/js/common/common.js',
         dist: 'common.js'
-    },
-    {
-        name: 'consts',
-        src: './src/js/common/consts.js',
-        dist: 'consts.js'
     }
 ];
 

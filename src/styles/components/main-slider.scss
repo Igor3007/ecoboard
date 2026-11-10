@@ -1,4 +1,5 @@
 @use "../helpers/variables";
+@use "../helpers/mixins";
 @use "../base/general";
 
 .interactive-slider {
@@ -44,7 +45,6 @@
             background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDg4IiBoZWlnaHQ9IjMyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBvcGFjaXR5PSIuMSIgZmlsbD0iI0UwMUIyNSI+PHBhdGggZD0iTTQ4OCA2MDRIMFY0MzQuNDI1bDI2MC4yNjctNjkuOTMzTDQ4OCA0NDkuNjMzVjYwNHoiLz48cGF0aCBkPSJNNDg4IDMzNi4yMjh2NzkuMTY4bC0yMjcuNzMzLTg4LjQ4MkwwIDM5OS4wOTZ2LTg4LjAxNWwyNjAuMjY3LTc2LjM3M0w0ODggMzM2LjIyOHoiLz48cGF0aCBkPSJNNDg4IDE0MS42OTR2MTU0Ljk1MWwtMjI3LjczMy05Ni4zOThMMCAyNzYuMTY5VjE0MS42OTRMMjYwLjI2NyAwIDQ4OCAxNDEuNjk0eiIvPjwvZz48L3N2Zz4=);
             background-repeat: no-repeat;
             background-position: 16% bottom;
-            animation: bread-flutter 2s ease-in-out infinite;
         }
         @media screen and (min-width: variables.$w1440) {
             gap: 60px;
@@ -341,8 +341,13 @@
         cursor: pointer;
         transition: 0.3s ease;
 
+
         &:hover {
-            background-color: rgba(255, 255, 255, 0.218);
+            background-color: rgb(255, 255, 255);
+
+            &::after {
+                filter: brightness(0) grayscale(1);
+            }
         }
 
         &::after {
@@ -356,10 +361,16 @@
         }
     }
 
-    &__next{
-    &::after {
-        transform: rotate(180deg);
+    &__prev{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
     }
+    &__next{
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        &::after {
+            transform: rotate(180deg);
+        }
     }
 
     &__count {
@@ -391,4 +402,38 @@
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+
+.bgtext {
+	position: absolute;
+	z-index: 5;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	border-radius: 8px;
+	padding: 12px 20px;
+	color: #fff;
+    font-size: 14px;
+    line-height: 140%;
+    display: none;
+
+    & span {
+        @include mixins.line-clamp(5);
+    }
+
+    @media screen and (min-width: variables.$w576) {
+        display: block;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1; /* Уводим за текст */
+        background: rgba(0, 0, 0, 0.5); /* Ваш цвет фона */
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px); /* Для Safari */
+        border-radius: 8px;
+      }
 }

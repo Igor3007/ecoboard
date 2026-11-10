@@ -5,6 +5,8 @@ mixin object-card(obj)
     .objects__card__content
       h3.objects__card__title= obj.title
       p.objects__card__text= obj.desc
+      .objects__card__detail
+        a(href='#'): button.btn Узнать подробнее
 
 mixin objects
   .objects

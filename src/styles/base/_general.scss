@@ -152,10 +152,14 @@
     }
 
     @media screen and (min-width: variables.$w1200) {
-        font-size: 44px;
+        font-size: 36px;
     }
 
     @media screen and (min-width: variables.$w1440) {
+        font-size: 44px;
+    }
+
+    @media screen and (min-width: variables.$w1660) {
         font-size: 52px;
     }
 }
@@ -170,6 +174,10 @@
     }
 
     @media screen and (min-width: variables.$w1200) {
+        font-size: 36px;
+    }
+
+    @media screen and (min-width: variables.$w1440) {
         font-size: 44px;
     }
 }

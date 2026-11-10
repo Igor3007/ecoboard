@@ -136,10 +136,11 @@
     height: 100%; // Чтобы карточки были одной высоты в слайдере
     display: flex;
     flex-direction: column;
+    transition: .3s ease;
 
-    @media screen and (min-width: variables.$w992) {
-        // На десктопе, если это не слайдер, а просто сетка
-        // height: auto;
+    &:hover {
+        background-color: variables.$bg-02;
+        border-color: variables.$bg-02;
     }
 
     &__header {
@@ -252,6 +253,11 @@
     flex-direction: column;
     gap: 16px;
     height: 100%;
+    transition: 0.3s ease;
+
+    &:hover {
+        background: variables.$bg-02;
+    }
 
     &__logo {
         margin-bottom: 8px;

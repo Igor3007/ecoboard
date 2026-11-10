@@ -38,4 +38,5 @@ mixin main-slider(data)
                 each item, index in data
                   li.splide__slide
                     .interactive-slider__image-wrapper
+                      div.bgtext: span ЭкоБоард — российский завод по производству фиброцементного сайдинга под дерево и камень. Мы создаём материалы, которые объединяют эстетику древесины, реалистичного камня и устойчивость современных технологий.
                       img.interactive-slider__image(src=item.image, alt=item.title, loading=(index === 0 ? "eager" : "lazy"))

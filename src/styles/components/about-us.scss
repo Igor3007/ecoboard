@@ -176,6 +176,20 @@
       width: 100%;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       z-index: 10;
+      transition: 0.3s ease;
+
+      &:hover {
+        max-width: 400px;
+        background-color: variables.$accent-1-2;
+
+        & .about-hero__video-btn {
+            background-color: variables.$accent-1-1;
+
+            & svg {
+                filter: grayscale(1) brightness(200);
+            }
+        }
+      }
     }
 
     @media screen and (min-width: variables.$w1440) {
@@ -221,9 +235,7 @@
     color: variables.$main;
     transition: transform 0.3s ease;
 
-    &:hover {
-      transform: scale(1.05);
-    }
+
 
     svg {
       margin-left: 4px; // Для оптического центрирования треугольника

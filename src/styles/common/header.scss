@@ -20,6 +20,8 @@
             top: 0px;
             padding: 16px 20px;
             backdrop-filter: blur(5px);
+            max-width: 1880px;
+            margin: 0 auto;
 
             @media screen and (min-width: var.$w992) {
                 left: 16px;

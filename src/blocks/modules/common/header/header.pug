@@ -21,7 +21,8 @@ include ../../float-menu/float-menu.pug
                 nav
                     ul
                         each item in app.mainMenu
-                            li: a(href=item.href)= item.text
+                            if !item.disable_header
+                                li: a(href=item.href)= item.text
 
             .header-top__right
                 .header-top__social
